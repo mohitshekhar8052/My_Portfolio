@@ -1,9 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Code } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const navItems = [
     { name: "Home", href: "#" },
@@ -43,7 +45,19 @@ const Navbar = () => {
                 {item.name}
               </button>
             ))}
-            <Button size="sm" className="bg-gradient-primary hover:shadow-glow transition-all duration-300">
+            <Button 
+              size="sm" 
+              variant="outline"
+              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              onClick={() => navigate('/payment')}
+            >
+              Payment
+            </Button>
+            <Button 
+              size="sm" 
+              className="bg-gradient-primary hover:shadow-glow transition-all duration-300"
+              onClick={() => navigate('/hire')}
+            >
               Hire Me
             </Button>
           </div>
@@ -73,7 +87,19 @@ const Navbar = () => {
                   {item.name}
                 </button>
               ))}
-              <Button size="sm" className="bg-gradient-primary hover:shadow-glow transition-all duration-300 w-fit">
+              <Button 
+                size="sm" 
+                variant="outline"
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 w-fit"
+                onClick={() => navigate('/payment')}
+              >
+                Payment
+              </Button>
+              <Button 
+                size="sm" 
+                className="bg-gradient-primary hover:shadow-glow transition-all duration-300 w-fit"
+                onClick={() => navigate('/hire')}
+              >
                 Hire Me
               </Button>
             </div>

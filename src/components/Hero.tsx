@@ -73,8 +73,11 @@ const Hero = () => {
                 variant="ghost" 
                 size="icon" 
                 className="hover:text-primary hover:scale-110 transition-all duration-300 hover:rotate-12"
+                asChild
               >
-                <Github className="h-6 w-6" />
+                <a href="https://github.com/mohitshekhar8052" target="_blank" rel="noopener noreferrer">
+                  <Github className="h-6 w-6" />
+                </a>
               </Button>
               <Button 
                 variant="ghost" 
@@ -96,9 +99,9 @@ const Hero = () => {
           {/* Profile Image with enhanced effects */}
           <div className="flex justify-center lg:justify-end animate-fade-in delay-300">
             <div className="relative group">
-              <div className="w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-card border-4 border-primary/20 relative transition-all duration-500 group-hover:scale-105 group-hover:border-primary/40">
+              <div className="w-80 h-96 lg:w-96 lg:h-[28rem] rounded-2xl overflow-hidden shadow-card border-4 border-primary/20 relative transition-all duration-500 group-hover:scale-105 group-hover:border-primary/40 transform rotate-2 group-hover:rotate-0">
                 <img 
-                  src="/lovable-uploads/ebc39b67-b73f-45e0-8291-2e2d9c2fa0fa.png"
+                  src="public/image (2).png"
                   alt="Profile"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
@@ -115,7 +118,7 @@ const Hero = () => {
                   <span className="text-xs">⚡</span>
                 </div>
               </div>
-              <div className="absolute -inset-8 bg-gradient-primary rounded-full opacity-20 blur-xl -z-10 group-hover:opacity-40 transition-opacity duration-500"></div>
+              <div className="absolute -inset-8 bg-gradient-primary rounded-2xl opacity-20 blur-xl -z-10 group-hover:opacity-40 transition-opacity duration-500 transform rotate-2 group-hover:rotate-0"></div>
             </div>
           </div>
         </div>

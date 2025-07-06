@@ -10,7 +10,7 @@ const Skills = () => {
       title: "Android Development",
       icon: "📱",
       skills: [
-        { name: "Kotlin", level: 90 },
+        { name: "Kotlin", level: 50 },
         { name: "Java", level: 85 },
         { name: "Android SDK", level: 88 },
         { name: "Jetpack Compose", level: 80 },
@@ -22,7 +22,7 @@ const Skills = () => {
       title: "Video Editing",
       icon: "🎬",
       skills: [
-        { name: "Adobe Premiere Pro", level: 90 },
+        { name: "Adobe Premiere Pro", level: 50 },
         { name: "After Effects", level: 85 },
         { name: "DaVinci Resolve", level: 78 },
         { name: "Motion Graphics", level: 80 },
@@ -34,9 +34,9 @@ const Skills = () => {
       title: "Programming & DSA",
       icon: "⚡",
       skills: [
-        { name: "Data Structures", level: 88 },
+        { name: "Data Structures", level: 60 },
         { name: "Algorithms", level: 85 },
-        { name: "Problem Solving", level: 90 },
+        { name: "Problem Solving", level: 70 },
         { name: "Time Complexity", level: 82 },
         { name: "System Design", level: 75 },
         { name: "Competitive Programming", level: 80 }

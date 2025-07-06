@@ -2,33 +2,38 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Download, FileText, Eye, Code, Trophy, Briefcase, CreditCard } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
+  const navigate = useNavigate();
+  
   const contactInfo = [
     {
       icon: Mail,
       title: "Email",
-      value: "developer@example.com",
-      href: "mailto:developer@example.com"
+      value: "mohit8052231582@gmail.com",
+      href: "mailto:mohit8052231582@gmail.com"
     },
     {
       icon: Phone,
       title: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567"
+      value: "+91 8299742112",
+      href: "tel:+918299742112"
     },
     {
       icon: MapPin,
       title: "Location",
-      value: "New York, NY",
+      value: "Kanpur, Uttar Pradesh, India",
       href: "#"
     }
   ];
 
   const socialLinks = [
-    { icon: Github, href: "#", label: "GitHub" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
+    { icon: Github, href: "https://github.com/mohitshekhar8052", label: "GitHub" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/mohit-shekhar-8838162a8/", label: "LinkedIn" },
+    { icon: Code, href: "https://leetcode.com/u/mohitKumarShekhar/", label: "LeetCode" },
+    { icon: Trophy, href: "https://www.codechef.com/users/mohitshekhar80", label: "CodeChef" },
     { icon: Twitter, href: "#", label: "Twitter" }
   ];
 
@@ -54,17 +59,17 @@ const Contact = () => {
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-foreground">First Name</label>
-                  <Input placeholder="John" className="bg-secondary border-border" />
+                  <Input placeholder="Name" className="bg-secondary border-border" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-foreground">Last Name</label>
-                  <Input placeholder="Doe" className="bg-secondary border-border" />
+                  <Input placeholder="Last Name" className="bg-secondary border-border" />
                 </div>
               </div>
               
               <div className="space-y-2">
                 <label className="text-sm font-medium text-foreground">Email</label>
-                <Input type="email" placeholder="john@example.com" className="bg-secondary border-border" />
+                <Input type="email" placeholder="developer@gami.com" className="bg-secondary border-border" />
               </div>
               
               <div className="space-y-2">
@@ -121,18 +126,19 @@ const Contact = () => {
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold mb-4 text-foreground">Follow Me</h4>
-              <div className="flex gap-4">
+              <h4 className="text-lg font-semibold mb-4 text-foreground">Follow Me & Coding Profiles</h4>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {socialLinks.map((social, index) => (
                   <Button
                     key={index}
                     variant="ghost"
-                    size="icon"
-                    className="hover:text-primary hover:bg-primary/10 transition-all duration-300"
+                    size="sm"
+                    className="hover:text-primary hover:bg-primary/10 transition-all duration-300 justify-start"
                     asChild
                   >
-                    <a href={social.href} aria-label={social.label}>
-                      <social.icon className="h-5 w-5" />
+                    <a href={social.href} aria-label={social.label} target="_blank" rel="noopener noreferrer">
+                      <social.icon className="h-4 w-4 mr-2" />
+                      {social.label}
                     </a>
                   </Button>
                 ))}
@@ -140,14 +146,70 @@ const Contact = () => {
             </div>
 
             <Card className="bg-gradient-primary/10 border-primary/20">
-              <CardContent className="p-6 text-center">
-                <h4 className="text-lg font-semibold mb-2 text-foreground">Available for Work</h4>
-                <p className="text-muted-foreground mb-4">
-                  Currently accepting new projects and collaborations.
-                </p>
-                <Button variant="secondary">
-                  Download Resume
-                </Button>
+              <CardContent className="p-6">
+                <div className="flex items-center justify-center gap-2 mb-4">
+                  <FileText className="h-5 w-5 text-primary" />
+                  <h4 className="text-lg font-semibold text-foreground">Resume Preview</h4>
+                </div>
+                
+                {/* Resume Preview Box */}
+                <div className="relative bg-white rounded-lg shadow-lg p-4 mb-6 border hover:shadow-xl transition-shadow duration-300">
+                  <iframe
+                    src="/Mohit_Shekhar_Resume.pdf"
+                    className="w-full h-80 border-0 rounded"
+                    title="Resume Preview"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent pointer-events-none rounded-lg"></div>
+                  
+                  {/* Preview overlay with view button */}
+                  <div className="absolute top-2 right-2">
+                    <Button size="sm" variant="secondary" asChild>
+                      <a href="/Mohit_Shekhar_Resume.pdf" target="_blank" rel="noopener noreferrer">
+                        <Eye className="h-3 w-3 mr-1" />
+                        View Full
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+                
+                <div className="text-center space-y-4">
+                  <div>
+                    <h5 className="text-md font-semibold mb-2 text-foreground">Available for Work</h5>
+                    <p className="text-muted-foreground text-sm">
+                      Currently accepting new projects and collaborations.
+                    </p>
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-3 justify-center">
+                    <Button variant="default" size="sm" className="bg-gradient-primary hover:shadow-glow" asChild>
+                      <a href="mailto:mohit8052231582@gmail.com?subject=Hiring Inquiry - Software Engineer Position">
+                        <Briefcase className="h-4 w-4 mr-2" />
+                        Hire Me
+                      </a>
+                    </Button>
+                    <Button 
+                      variant="default" 
+                      size="sm" 
+                      className="bg-green-600 hover:bg-green-700 text-white"
+                      onClick={() => navigate('/payment')}
+                    >
+                      <CreditCard className="h-4 w-4 mr-2" />
+                      Make Payment
+                    </Button>
+                    <Button variant="secondary" size="sm" asChild>
+                      <a href="/Mohit_Shekhar_Resume.pdf" download="Mohit_Shekhar_Resume.pdf">
+                        <Download className="h-4 w-4 mr-2" />
+                        Download PDF
+                      </a>
+                    </Button>
+                    <Button variant="outline" size="sm" asChild>
+                      <a href="/Mohit_Shekhar_Resume.pdf" target="_blank" rel="noopener noreferrer">
+                        <Eye className="h-4 w-4 mr-2" />
+                        View Online
+                      </a>
+                    </Button>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </div>
