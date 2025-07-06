@@ -1,6 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
+import AnimatedSkillBar from "./AnimatedSkillBar";
+import AnimatedCounter from "./AnimatedCounter";
+import GlowingCard from "./GlowingCard";
 
 const Skills = () => {
   const skillCategories = [
@@ -62,56 +64,69 @@ const Skills = () => {
 
         <div className="grid lg:grid-cols-3 gap-8 mb-16">
           {skillCategories.map((category, index) => (
-            <Card key={index} className="bg-gradient-card border-border hover:shadow-glow transition-all duration-300">
+            <GlowingCard key={index} className="group hover:scale-105 transition-transform duration-300">
               <CardHeader>
-                <CardTitle className="flex items-center gap-3 text-foreground">
-                  <span className="text-2xl">{category.icon}</span>
+                <CardTitle className="flex items-center gap-3 text-foreground group-hover:text-primary transition-colors duration-300">
+                  <span className="text-2xl group-hover:animate-bounce">{category.icon}</span>
                   {category.title}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {category.skills.map((skill, skillIndex) => (
-                  <div key={skillIndex} className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium text-foreground">{skill.name}</span>
-                      <span className="text-sm text-muted-foreground">{skill.level}%</span>
-                    </div>
-                    <Progress value={skill.level} className="h-2" />
-                  </div>
+                  <AnimatedSkillBar 
+                    key={skillIndex}
+                    skill={skill.name}
+                    percentage={skill.level}
+                    delay={skillIndex * 100}
+                  />
                 ))}
               </CardContent>
-            </Card>
+            </GlowingCard>
           ))}
         </div>
 
-        <div className="bg-gradient-card rounded-lg p-8 border border-border">
-          <h3 className="text-2xl font-bold text-center mb-8 text-foreground">Tools & Technologies</h3>
-          <div className="flex flex-wrap gap-3 justify-center">
-            {tools.map((tool, index) => (
-              <Badge 
-                key={index} 
-                variant="secondary" 
-                className="px-4 py-2 text-sm hover:bg-primary hover:text-primary-foreground transition-colors duration-300"
-              >
-                {tool}
-              </Badge>
-            ))}
+        <GlowingCard glowColor="accent" className="mb-16">
+          <div className="p-8">
+            <h3 className="text-2xl font-bold text-center mb-8 text-foreground">Tools & Technologies</h3>
+            <div className="flex flex-wrap gap-3 justify-center">
+              {tools.map((tool, index) => (
+                <Badge 
+                  key={index} 
+                  variant="secondary" 
+                  className="px-4 py-2 text-sm hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 cursor-pointer"
+                >
+                  {tool}
+                </Badge>
+              ))}
+            </div>
           </div>
-        </div>
+        </GlowingCard>
 
-        <div className="mt-16 grid md:grid-cols-3 gap-8 text-center">
-          <div className="space-y-2">
-            <h4 className="text-3xl font-bold text-primary">3+</h4>
-            <p className="text-muted-foreground">Years of Experience</p>
-          </div>
-          <div className="space-y-2">
-            <h4 className="text-3xl font-bold text-primary">50+</h4>
-            <p className="text-muted-foreground">Projects Completed</p>
-          </div>
-          <div className="space-y-2">
-            <h4 className="text-3xl font-bold text-primary">500+</h4>
-            <p className="text-muted-foreground">DSA Problems Solved</p>
-          </div>
+        <div className="grid md:grid-cols-3 gap-8 text-center">
+          <GlowingCard className="hover:scale-105 transition-transform duration-300">
+            <div className="p-6 space-y-2">
+              <h4 className="text-4xl font-bold text-primary">
+                <AnimatedCounter end={3} suffix="+" />
+              </h4>
+              <p className="text-muted-foreground">Years of Experience</p>
+            </div>
+          </GlowingCard>
+          <GlowingCard className="hover:scale-105 transition-transform duration-300">
+            <div className="p-6 space-y-2">
+              <h4 className="text-4xl font-bold text-primary">
+                <AnimatedCounter end={50} suffix="+" duration={2500} />
+              </h4>
+              <p className="text-muted-foreground">Projects Completed</p>
+            </div>
+          </GlowingCard>
+          <GlowingCard className="hover:scale-105 transition-transform duration-300">
+            <div className="p-6 space-y-2">
+              <h4 className="text-4xl font-bold text-primary">
+                <AnimatedCounter end={500} suffix="+" duration={3000} />
+              </h4>
+              <p className="text-muted-foreground">DSA Problems Solved</p>
+            </div>
+          </GlowingCard>
         </div>
       </div>
     </section>

@@ -1,7 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Github, Play } from "lucide-react";
+import ProjectCard from "./ProjectCard";
 
 const Projects = () => {
   const projects = [
@@ -52,15 +50,6 @@ const Projects = () => {
     }
   ];
 
-  const getProjectIcon = (type: string) => {
-    switch (type) {
-      case 'android': return '📱';
-      case 'video': return '🎬';
-      case 'dsa': return '⚡';
-      default: return '💻';
-    }
-  };
-
   return (
     <section id="projects" className="py-20 bg-background">
       <div className="container mx-auto px-6">
@@ -75,54 +64,18 @@ const Projects = () => {
 
         <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <Card 
-              key={index} 
-              className={`bg-gradient-card border-border hover:shadow-glow transition-all duration-300 ${
-                project.featured ? 'ring-2 ring-primary/20' : ''
-              }`}
-            >
-              <CardHeader>
-                <div className="flex items-start justify-between">
-                  <div className="flex items-center gap-3">
-                    <span className="text-2xl">{getProjectIcon(project.type)}</span>
-                    <div>
-                      <CardTitle className="text-foreground">{project.title}</CardTitle>
-                      <Badge variant="secondary" className="mt-1">{project.category}</Badge>
-                    </div>
-                  </div>
-                  {project.featured && (
-                    <Badge className="bg-gradient-primary text-primary-foreground">Featured</Badge>
-                  )}
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-muted-foreground">{project.description}</p>
-                
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech, techIndex) => (
-                    <Badge key={techIndex} variant="outline" className="text-xs">
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-
-                <div className="flex gap-2 pt-2">
-                  <Button size="sm" variant="secondary" className="flex items-center gap-2">
-                    {project.type === 'video' ? <Play className="h-4 w-4" /> : <Github className="h-4 w-4" />}
-                    {project.type === 'video' ? 'Watch' : 'Code'}
-                  </Button>
-                  <Button size="sm" variant="ghost" className="flex items-center gap-2">
-                    <ExternalLink className="h-4 w-4" />
-                    Live Demo
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+            <div key={index} className="animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
+              <ProjectCard {...project} />
+            </div>
           ))}
         </div>
 
         <div className="text-center mt-12">
-          <Button size="lg" variant="secondary">
+          <Button 
+            size="lg" 
+            variant="secondary"
+            className="hover:scale-105 transition-all duration-300 hover:shadow-glow"
+          >
             View All Projects
           </Button>
         </div>
