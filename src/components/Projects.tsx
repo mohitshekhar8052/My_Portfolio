@@ -4,49 +4,60 @@ import ProjectCard from "./ProjectCard";
 const Projects = () => {
   const projects = [
     {
-      title: "E-Commerce Android App",
-      category: "Mobile Development",
-      description: "A full-featured e-commerce application built with Kotlin and Jetpack Compose, featuring user authentication, product catalog, shopping cart, and payment integration.",
-      technologies: ["Kotlin", "Jetpack Compose", "MVVM", "Room", "Retrofit", "Firebase"],
-      type: "android",
-      featured: true
+      title: "Portfolio Website",
+      category: "Web Development",
+      description: "A modern, responsive portfolio website built with React and TypeScript, featuring smooth animations and optimized performance.",
+      technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "Framer Motion"],
+      type: "web",
+      featured: true,
+      githubUrl: "https://github.com/yourusername/portfolio-website",
+      liveUrl: "https://yourportfolio.com"
     },
     {
-      title: "Task Management App",
+      title: "Task Manager Android App",
       category: "Mobile Development", 
-      description: "A productivity app with offline capabilities, real-time synchronization, and beautiful Material Design UI. Includes task scheduling, reminders, and progress tracking.",
-      technologies: ["Android", "SQLite", "Material Design", "WorkManager", "Notifications"],
-      type: "android"
+      description: "A productivity app with offline capabilities, real-time synchronization, and beautiful Material Design UI.",
+      technologies: ["Kotlin", "Jetpack Compose", "Room", "WorkManager", "Material 3"],
+      type: "android",
+      githubUrl: "https://github.com/yourusername/task-manager-android",
+      liveUrl: "https://play.google.com/store/apps/details?id=com.yourapp"
     },
     {
-      title: "Brand Promotional Video",
-      category: "Video Editing",
-      description: "Created a compelling 2-minute promotional video for a tech startup, incorporating motion graphics, color grading, and professional audio mixing.",
-      technologies: ["Premiere Pro", "After Effects", "Audition", "Motion Graphics", "Color Grading"],
-      type: "video",
-      featured: true
-    },
-    {
-      title: "Wedding Highlight Reel",
-      category: "Video Editing",
-      description: "Crafted an emotional wedding highlight reel with cinematic transitions, synchronized audio, and beautiful color correction to capture the special moments.",
-      technologies: ["DaVinci Resolve", "Color Correction", "Audio Sync", "Transitions"],
-      type: "video"
+      title: "E-Commerce Platform",
+      category: "Full Stack Development",
+      description: "A complete e-commerce solution with user authentication, payment integration, and admin dashboard.",
+      technologies: ["React", "Node.js", "MongoDB", "Stripe", "JWT", "Express"],
+      type: "fullstack",
+      featured: true,
+      githubUrl: "https://github.com/yourusername/ecommerce-platform",
+      liveUrl: "https://your-ecommerce.com"
     },
     {
       title: "Algorithm Visualizer",
-      category: "Programming",
-      description: "Interactive web application to visualize sorting and pathfinding algorithms. Helps students understand algorithmic concepts through visual representation.",
-      technologies: ["JavaScript", "HTML5 Canvas", "CSS3", "Data Structures", "Algorithms"],
-      type: "dsa"
+      category: "Web Development",
+      description: "Interactive web application to visualize sorting and pathfinding algorithms with smooth animations.",
+      technologies: ["JavaScript", "HTML5 Canvas", "CSS3", "Algorithms", "Data Structures"],
+      type: "web",
+      githubUrl: "https://github.com/yourusername/algorithm-visualizer",
+      liveUrl: "https://algorithm-viz.com"
     },
     {
-      title: "LeetCode Solutions",
+      title: "Weather App",
+      category: "Mobile Development",
+      description: "A beautiful weather application with location-based forecasts and interactive weather maps.",
+      technologies: ["React Native", "TypeScript", "Weather API", "Maps SDK", "Async Storage"],
+      type: "mobile",
+      githubUrl: "https://github.com/yourusername/weather-app",
+      liveUrl: "https://weather-app-demo.com"
+    },
+    {
+      title: "LeetCode Solutions Repository",
       category: "Programming",
-      description: "Comprehensive collection of optimized solutions to 500+ LeetCode problems with detailed explanations and multiple approaches for each problem.",
-      technologies: ["Java", "Python", "Data Structures", "Dynamic Programming", "Graphs"],
+      description: "Comprehensive collection of optimized solutions to 500+ LeetCode problems with detailed explanations.",
+      technologies: ["Java", "Python", "C++", "Data Structures", "Dynamic Programming"],
       type: "dsa",
-      featured: true
+      featured: true,
+      githubUrl: "https://github.com/yourusername/leetcode-solutions"
     }
   ];
 
