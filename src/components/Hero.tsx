@@ -1,9 +1,21 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import TypewriterText from "./TypewriterText";
 import FloatingElements from "./FloatingElements";
+import ScrollReveal from "./ScrollReveal";
 
 const Hero = () => {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"]
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
   const typewriterTexts = [
     "Android Developer",
     "Video Editor", 
@@ -17,7 +29,11 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen bg-gradient-hero flex items-center justify-center relative overflow-hidden">
+    <motion.section 
+      ref={ref}
+      style={{ y, opacity }}
+      className="min-h-screen bg-gradient-hero flex items-center justify-center relative overflow-hidden"
+    >
       <FloatingElements />
       
       {/* Enhanced background accent elements */}
@@ -30,97 +46,171 @@ const Hero = () => {
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
-          <div className="text-center lg:text-left space-y-8">
-            <div className="space-y-4">
-              <h1 className="text-5xl lg:text-7xl font-bold bg-gradient-primary bg-clip-text text-transparent animate-fade-in">
-                Hello, I'm a
-              </h1>
-              <div className="text-4xl lg:text-6xl font-bold text-foreground min-h-[1.2em]">
-                <TypewriterText 
-                  texts={typewriterTexts}
-                  speed={150}
-                  deleteSpeed={100}
-                  delayBetween={2000}
+          <ScrollReveal direction="left" delay={0.2}>
+             <div className="text-center lg:text-left space-y-8">
+               <div className="space-y-4">
+                 <h1 className="text-5xl lg:text-7xl font-bold bg-gradient-primary bg-clip-text text-transparent animate-fade-in">
+                   Hello, I'm a
+                 </h1>
+                 <div className="text-4xl lg:text-6xl font-bold text-foreground min-h-[1.2em]">
+                   <TypewriterText 
+                     texts={typewriterTexts}
+                     speed={150}
+                     deleteSpeed={100}
+                     delayBetween={2000}
+                   />
+                 </div>
+                 <p className="text-xl text-muted-foreground max-w-lg animate-fade-in delay-500">
+                   Crafting digital experiences through code and visual storytelling
+                 </p>
+                 <p className="text-lg text-muted-foreground max-w-lg animate-fade-in delay-700">
+                   Passionate about mobile development, creative editing, and algorithmic problem solving
+                 </p>
+               </div>
+
+               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in delay-1000">
+                 <Button 
+                   size="lg" 
+                   className="bg-gradient-primary hover:shadow-glow transition-all duration-300 hover:scale-105 group"
+                 >
+                   <span className="group-hover:animate-pulse">View My Work</span>
+                 </Button>
+                 <Button 
+                   variant="secondary" 
+                   size="lg" 
+                   onClick={scrollToAbout}
+                   className="hover:scale-105 transition-all duration-300"
+                 >
+                   About Me
+                 </Button>
+               </div>
+
+               <div className="flex gap-6 justify-center lg:justify-start animate-fade-in delay-1200">
+                 <Button 
+                   variant="ghost" 
+                   size="icon" 
+                   className="hover:text-primary hover:scale-110 transition-all duration-300 hover:rotate-12"
+                   asChild
+                 >
+                   <a href="https://github.com/mohitshekhar8052" target="_blank" rel="noopener noreferrer">
+                     <Github className="h-6 w-6" />
+                   </a>
+                 </Button>
+                 <Button 
+                   variant="ghost" 
+                   size="icon" 
+                   className="hover:text-primary hover:scale-110 transition-all duration-300 hover:rotate-12"
+                 >
+                   <Linkedin className="h-6 w-6" />
+                 </Button>
+                 <Button 
+                   variant="ghost" 
+                   size="icon" 
+                   className="hover:text-primary hover:scale-110 transition-all duration-300 hover:rotate-12"
+                 >
+                   <Mail className="h-6 w-6" />
+                 </Button>
+               </div>
+             </div>
+          </ScrollReveal>
+
+          {/* Profile Image with oval shape and enhanced effects */}
+          <ScrollReveal direction="right" delay={0.4}>
+            <div className="flex justify-center lg:justify-end">
+              <motion.div 
+                className="relative group"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              >
+                {/* Animated background glow */}
+                <motion.div 
+                  className="absolute -inset-8 bg-gradient-primary rounded-full opacity-20 blur-xl -z-10"
+                  animate={{ 
+                    scale: [1, 1.1, 1],
+                    opacity: [0.2, 0.4, 0.2]
+                  }}
+                  transition={{ 
+                    duration: 3, 
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
                 />
-              </div>
-              <p className="text-xl text-muted-foreground max-w-lg animate-fade-in delay-500">
-                Crafting digital experiences through code and visual storytelling
-              </p>
-              <p className="text-lg text-muted-foreground max-w-lg animate-fade-in delay-700">
-                Passionate about mobile development, creative editing, and algorithmic problem solving
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in delay-1000">
-              <Button 
-                size="lg" 
-                className="bg-gradient-primary hover:shadow-glow transition-all duration-300 hover:scale-105 group"
-              >
-                <span className="group-hover:animate-pulse">View My Work</span>
-              </Button>
-              <Button 
-                variant="secondary" 
-                size="lg" 
-                onClick={scrollToAbout}
-                className="hover:scale-105 transition-all duration-300"
-              >
-                About Me
-              </Button>
-            </div>
-
-            <div className="flex gap-6 justify-center lg:justify-start animate-fade-in delay-1200">
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                className="hover:text-primary hover:scale-110 transition-all duration-300 hover:rotate-12"
-                asChild
-              >
-                <a href="https://github.com/mohitshekhar8052" target="_blank" rel="noopener noreferrer">
-                  <Github className="h-6 w-6" />
-                </a>
-              </Button>
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                className="hover:text-primary hover:scale-110 transition-all duration-300 hover:rotate-12"
-              >
-                <Linkedin className="h-6 w-6" />
-              </Button>
-              <Button 
-                variant="ghost" 
-                size="icon" 
-                className="hover:text-primary hover:scale-110 transition-all duration-300 hover:rotate-12"
-              >
-                <Mail className="h-6 w-6" />
-              </Button>
-            </div>
-          </div>
-
-          {/* Profile Image with enhanced effects */}
-          <div className="flex justify-center lg:justify-end animate-fade-in delay-300">
-            <div className="relative group">
-              <div className="w-80 h-96 lg:w-96 lg:h-[28rem] rounded-2xl overflow-hidden shadow-card border-4 border-primary/20 relative transition-all duration-500 group-hover:scale-105 group-hover:border-primary/40 transform rotate-2 group-hover:rotate-0">
-                <img 
-                  src="public/image (2).png"
-                  alt="Profile"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-primary opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                 
-                {/* Floating tech icons around the image */}
-                <div className="absolute -top-4 -right-4 w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 animate-bounce">
-                  <span className="text-xs">📱</span>
+                {/* Main oval container */}
+                <div className="relative overflow-hidden" style={{
+                  width: '320px',
+                  height: '400px',
+                  borderRadius: '50%',
+                  border: '4px solid hsl(var(--primary) / 0.3)',
+                  background: 'linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--accent) / 0.1))'
+                }}>
+                  <motion.img 
+                    src="/lovable-uploads/8521a317-363c-4489-a602-54a76c79ee8a.png"
+                    alt="Mohit Shekhar - Android Developer & Video Editor"
+                    className="w-full h-full object-cover"
+                    initial={{ scale: 1.1 }}
+                    whileHover={{ scale: 1.15 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  
+                  {/* Overlay gradient on hover */}
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-primary opacity-0"
+                    whileHover={{ opacity: 0.1 }}
+                    transition={{ duration: 0.3 }}
+                  />
                 </div>
-                <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-accent/20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 animate-bounce delay-200">
-                  <span className="text-xs">🎬</span>
-                </div>
-                <div className="absolute top-8 -left-8 w-8 h-8 bg-primary/20 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 animate-bounce delay-400">
-                  <span className="text-xs">⚡</span>
-                </div>
-              </div>
-              <div className="absolute -inset-8 bg-gradient-primary rounded-2xl opacity-20 blur-xl -z-10 group-hover:opacity-40 transition-opacity duration-500 transform rotate-2 group-hover:rotate-0"></div>
+                
+                {/* Floating animated icons */}
+                <motion.div 
+                  className="absolute -top-4 -right-4 w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-primary/30"
+                  animate={{ 
+                    y: [-5, 5, -5],
+                    rotate: [0, 10, 0] 
+                  }}
+                  transition={{ 
+                    duration: 2, 
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  <span className="text-lg">📱</span>
+                </motion.div>
+                
+                <motion.div 
+                  className="absolute -bottom-4 -left-4 w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-accent/30"
+                  animate={{ 
+                    y: [5, -5, 5],
+                    rotate: [0, -10, 0] 
+                  }}
+                  transition={{ 
+                    duration: 2.5, 
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.5
+                  }}
+                >
+                  <span className="text-lg">🎬</span>
+                </motion.div>
+                
+                <motion.div 
+                  className="absolute top-8 -left-8 w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-primary/30"
+                  animate={{ 
+                    x: [-3, 3, -3],
+                    y: [-2, 2, -2] 
+                  }}
+                  transition={{ 
+                    duration: 3, 
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1
+                  }}
+                >
+                  <span className="text-lg">⚡</span>
+                </motion.div>
+              </motion.div>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
 
         {/* Enhanced scroll indicator */}
@@ -135,7 +225,7 @@ const Hero = () => {
           </Button>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
