@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Download, FileText, Eye, Code, Trophy, Briefcase, CreditCard } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const navigate = useNavigate();
@@ -181,21 +182,51 @@ const Contact = () => {
                   </div>
                   
                   <div className="flex flex-wrap gap-3 justify-center">
-                    <Button variant="default" size="sm" className="bg-gradient-primary hover:shadow-glow" asChild>
-                      <a href="mailto:mohit8052231582@gmail.com?subject=Hiring Inquiry - Software Engineer Position">
-                        <Briefcase className="h-4 w-4 mr-2" />
-                        Hire Me
-                      </a>
-                    </Button>
-                    <Button 
-                      variant="default" 
-                      size="sm" 
-                      className="bg-green-600 hover:bg-green-700 text-white"
-                      onClick={() => navigate('/payment')}
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ 
+                        scale: 0.95,
+                        rotate: [0, -2, 2, 0],
+                        transition: { duration: 0.3 }
+                      }}
                     >
-                      <CreditCard className="h-4 w-4 mr-2" />
-                      Make Payment
-                    </Button>
+                      <Button variant="default" size="sm" className="bg-gradient-primary hover:shadow-glow relative overflow-hidden group" asChild>
+                        <a href="mailto:mohit8052231582@gmail.com?subject=Hiring Inquiry - Software Engineer Position">
+                          <motion.div
+                            className="absolute inset-0 bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-500"
+                          />
+                          <Briefcase className="h-4 w-4 mr-2 relative z-10" />
+                          <span className="relative z-10">Hire Me</span>
+                        </a>
+                      </Button>
+                    </motion.div>
+                    <motion.div
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ 
+                        scale: 0.95,
+                        y: [0, -5, 0],
+                        transition: { duration: 0.4 }
+                      }}
+                    >
+                      <Button 
+                        variant="default" 
+                        size="sm" 
+                        className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white relative overflow-hidden group shadow-lg hover:shadow-xl"
+                        onClick={() => navigate('/payment')}
+                      >
+                        <motion.div
+                          className="absolute inset-0 bg-white/20 -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"
+                        />
+                        <motion.div
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                          className="relative z-10"
+                        >
+                          <CreditCard className="h-4 w-4 mr-2" />
+                        </motion.div>
+                        <span className="relative z-10">Make Payment</span>
+                      </Button>
+                    </motion.div>
                     <Button variant="secondary" size="sm" asChild>
                       <a href="/Mohit_Shekhar_Resume.pdf" download="Mohit_Shekhar_Resume.pdf">
                         <Download className="h-4 w-4 mr-2" />
