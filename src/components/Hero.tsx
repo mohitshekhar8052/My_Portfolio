@@ -114,100 +114,221 @@ const Hero = () => {
              </div>
           </ScrollReveal>
 
-          {/* Profile Image with oval shape and enhanced effects */}
+          {/* Revolutionary Profile Image with advanced effects */}
           <ScrollReveal direction="right" delay={0.4}>
             <div className="flex justify-center lg:justify-end">
               <motion.div 
-                className="relative group"
+                className="relative group cursor-pointer"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               >
-                {/* Animated background glow */}
+                {/* Multiple layered background glows */}
                 <motion.div 
-                  className="absolute -inset-8 bg-gradient-primary rounded-full opacity-20 blur-xl -z-10"
+                  className="absolute -inset-16 bg-gradient-primary rounded-full opacity-10 blur-3xl -z-20"
                   animate={{ 
-                    scale: [1, 1.1, 1],
-                    opacity: [0.2, 0.4, 0.2]
+                    scale: [1, 1.2, 1],
+                    rotate: [0, 180, 360]
                   }}
                   transition={{ 
-                    duration: 3, 
+                    duration: 8, 
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                />
+                
+                <motion.div 
+                  className="absolute -inset-12 bg-gradient-to-br from-primary/20 via-accent/20 to-primary/20 rounded-full blur-2xl -z-10"
+                  animate={{ 
+                    scale: [1.1, 1.3, 1.1],
+                    opacity: [0.3, 0.6, 0.3]
+                  }}
+                  transition={{ 
+                    duration: 4, 
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}
                 />
+
+                {/* Outer rotating ring */}
+                <motion.div 
+                  className="absolute -inset-6 border-2 border-dashed border-primary/30 rounded-full -z-5"
+                  animate={{ rotate: 360 }}
+                  transition={{ 
+                    duration: 20, 
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                />
                 
-                {/* Main oval container */}
-                <div className="relative overflow-hidden" style={{
-                  width: '320px',
-                  height: '400px',
+                {/* Inner rotating ring */}
+                <motion.div 
+                  className="absolute -inset-3 border border-accent/40 rounded-full -z-5"
+                  animate={{ rotate: -360 }}
+                  transition={{ 
+                    duration: 15, 
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                />
+                
+                {/* Main premium container with glass effect */}
+                <div className="relative overflow-hidden backdrop-blur-sm" style={{
+                  width: '340px',
+                  height: '420px',
                   borderRadius: '50%',
-                  border: '4px solid hsl(var(--primary) / 0.3)',
-                  background: 'linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--accent) / 0.1))'
+                  border: '3px solid',
+                  borderImage: 'linear-gradient(45deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary))) 1',
+                  background: 'linear-gradient(135deg, hsl(var(--primary) / 0.15), hsl(var(--accent) / 0.15), hsl(var(--primary) / 0.1))',
+                  boxShadow: `
+                    0 0 60px hsl(var(--primary) / 0.4),
+                    inset 0 0 60px hsl(var(--accent) / 0.1),
+                    0 20px 40px hsl(var(--primary) / 0.2)
+                  `
                 }}>
+                  {/* Shimmer effect overlay */}
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent"
+                    animate={{ 
+                      x: ['-100%', '100%'],
+                      opacity: [0, 1, 0]
+                    }}
+                    transition={{ 
+                      duration: 3, 
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 2
+                    }}
+                  />
+                  
                   <motion.img 
                     src="/lovable-uploads/8521a317-363c-4489-a602-54a76c79ee8a.png"
                     alt="Mohit Shekhar - Android Developer & Video Editor"
                     className="w-full h-full object-cover"
-                    initial={{ scale: 1.1 }}
-                    whileHover={{ scale: 1.15 }}
-                    transition={{ duration: 0.3 }}
+                    initial={{ scale: 1.1, filter: "brightness(1)" }}
+                    whileHover={{ 
+                      scale: 1.15, 
+                      filter: "brightness(1.1) contrast(1.1) saturate(1.1)"
+                    }}
+                    transition={{ duration: 0.4 }}
                   />
                   
-                  {/* Overlay gradient on hover */}
+                  {/* Premium overlay effects */}
                   <motion.div 
-                    className="absolute inset-0 bg-gradient-primary opacity-0"
+                    className="absolute inset-0 bg-gradient-to-br from-primary/0 via-accent/0 to-primary/20 opacity-0"
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.4 }}
+                  />
+                  
+                  {/* Geometric pattern overlay */}
+                  <motion.div 
+                    className="absolute inset-0 opacity-0 group-hover:opacity-20"
+                    style={{
+                      backgroundImage: `
+                        radial-gradient(circle at 20% 20%, hsl(var(--primary)) 2px, transparent 2px),
+                        radial-gradient(circle at 80% 80%, hsl(var(--accent)) 2px, transparent 2px)
+                      `,
+                      backgroundSize: '40px 40px'
+                    }}
+                    initial={{ opacity: 0 }}
                     whileHover={{ opacity: 0.1 }}
                     transition={{ duration: 0.3 }}
                   />
                 </div>
                 
-                {/* Floating animated icons */}
+                {/* Enhanced floating skill icons with 3D effect */}
                 <motion.div 
-                  className="absolute -top-4 -right-4 w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-primary/30"
+                  className="absolute -top-6 -right-6 w-16 h-16 bg-gradient-to-br from-primary/30 to-primary/10 rounded-full flex items-center justify-center backdrop-blur-md border-2 border-primary/40 shadow-lg"
                   animate={{ 
-                    y: [-5, 5, -5],
-                    rotate: [0, 10, 0] 
-                  }}
-                  transition={{ 
-                    duration: 2, 
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                >
-                  <span className="text-lg">📱</span>
-                </motion.div>
-                
-                <motion.div 
-                  className="absolute -bottom-4 -left-4 w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-accent/30"
-                  animate={{ 
-                    y: [5, -5, 5],
-                    rotate: [0, -10, 0] 
-                  }}
-                  transition={{ 
-                    duration: 2.5, 
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 0.5
-                  }}
-                >
-                  <span className="text-lg">🎬</span>
-                </motion.div>
-                
-                <motion.div 
-                  className="absolute top-8 -left-8 w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-primary/30"
-                  animate={{ 
-                    x: [-3, 3, -3],
-                    y: [-2, 2, -2] 
+                    y: [-8, 8, -8],
+                    rotate: [0, 15, 0],
+                    scale: [1, 1.1, 1]
                   }}
                   transition={{ 
                     duration: 3, 
                     repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                  whileHover={{ scale: 1.2, rotate: 360 }}
+                >
+                  <span className="text-2xl">📱</span>
+                </motion.div>
+                
+                <motion.div 
+                  className="absolute -bottom-6 -left-6 w-16 h-16 bg-gradient-to-br from-accent/30 to-accent/10 rounded-full flex items-center justify-center backdrop-blur-md border-2 border-accent/40 shadow-lg"
+                  animate={{ 
+                    y: [8, -8, 8],
+                    rotate: [0, -15, 0],
+                    scale: [1, 1.1, 1]
+                  }}
+                  transition={{ 
+                    duration: 3.5, 
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.5
+                  }}
+                  whileHover={{ scale: 1.2, rotate: -360 }}
+                >
+                  <span className="text-2xl">🎬</span>
+                </motion.div>
+                
+                <motion.div 
+                  className="absolute top-12 -left-10 w-14 h-14 bg-gradient-to-br from-primary/25 to-primary/5 rounded-full flex items-center justify-center backdrop-blur-md border-2 border-primary/30 shadow-lg"
+                  animate={{ 
+                    x: [-6, 6, -6],
+                    y: [-4, 4, -4],
+                    rotate: [0, 20, 0]
+                  }}
+                  transition={{ 
+                    duration: 4, 
+                    repeat: Infinity,
                     ease: "easeInOut",
                     delay: 1
                   }}
+                  whileHover={{ scale: 1.3, rotate: 180 }}
                 >
-                  <span className="text-lg">⚡</span>
+                  <span className="text-xl">⚡</span>
                 </motion.div>
+                
+                <motion.div 
+                  className="absolute bottom-16 -right-10 w-14 h-14 bg-gradient-to-br from-accent/25 to-accent/5 rounded-full flex items-center justify-center backdrop-blur-md border-2 border-accent/30 shadow-lg"
+                  animate={{ 
+                    x: [6, -6, 6],
+                    y: [4, -4, 4],
+                    rotate: [0, -20, 0]
+                  }}
+                  transition={{ 
+                    duration: 4.5, 
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1.5
+                  }}
+                  whileHover={{ scale: 1.3, rotate: -180 }}
+                >
+                  <span className="text-xl">🧠</span>
+                </motion.div>
+
+                {/* Particle effects */}
+                {[...Array(6)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute w-2 h-2 bg-primary/60 rounded-full"
+                    style={{
+                      top: `${20 + i * 15}%`,
+                      right: `${-5 + (i % 2) * 10}%`,
+                    }}
+                    animate={{
+                      y: [-20, 20, -20],
+                      opacity: [0, 1, 0],
+                      scale: [0, 1, 0]
+                    }}
+                    transition={{
+                      duration: 2 + i * 0.5,
+                      repeat: Infinity,
+                      delay: i * 0.3,
+                      ease: "easeInOut"
+                    }}
+                  />
+                ))}
               </motion.div>
             </div>
           </ScrollReveal>
