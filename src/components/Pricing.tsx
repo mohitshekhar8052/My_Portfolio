@@ -1,11 +1,14 @@
 import { Check, Star } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import GlowingCard from "./GlowingCard";
 
 const Pricing = () => {
+  const navigate = useNavigate();
+  
   const plans = [
     {
       name: "Basic",
-      price: "$299",
+      price: "₹1599",
       period: "/project",
       description: "Perfect for simple Android apps or basic video editing",
       features: [
@@ -22,7 +25,7 @@ const Pricing = () => {
     },
     {
       name: "Pro",
-      price: "$699",
+      price: "₹2999",
       period: "/project",
       description: "Advanced solutions with complex features and professional editing",
       features: [
@@ -42,7 +45,7 @@ const Pricing = () => {
     },
     {
       name: "Ultimate",
-      price: "$1499",
+      price: "₹5999",
       period: "/project",
       description: "Complete end-to-end solution with premium features",
       features: [
@@ -117,6 +120,17 @@ const Pricing = () => {
                 </div>
 
                 <button 
+                  onClick={() => navigate('/payment', { 
+                    state: { 
+                      selectedPlan: {
+                        name: plan.name,
+                        price: plan.price,
+                        period: plan.period,
+                        description: plan.description,
+                        features: plan.features
+                      }
+                    } 
+                  })}
                   className={`w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 ${
                     plan.popular 
                       ? 'bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105' 

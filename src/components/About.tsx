@@ -26,8 +26,12 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-background relative">
-      <div className="container mx-auto px-6">
+    <section id="about" className="py-20 px-4 relative overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/50 to-background"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+      
+      <div className="container mx-auto px-6 relative">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
             About Me

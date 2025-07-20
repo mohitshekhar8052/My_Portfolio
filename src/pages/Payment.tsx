@@ -6,16 +6,23 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { ArrowLeft, CreditCard, DollarSign, Smartphone, Building, CheckCircle, AlertCircle, Copy, ExternalLink, Wallet, Bitcoin, Banknote, Zap, Shield, Clock, Award, Star } from "lucide-react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Payment = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const selectedPlan = location.state?.selectedPlan;
+  
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string>("");
-  const [amount, setAmount] = useState<string>("");
+  const [amount, setAmount] = useState<string>(selectedPlan?.price?.replace('₹', '') || "");
   const [projectId, setProjectId] = useState<string>("");
-  const [description, setDescription] = useState<string>("");
+  const [description, setDescription] = useState<string>(
+    selectedPlan 
+      ? `${selectedPlan.name} Plan - ${selectedPlan.description}` 
+      : ""
+  );
   const [clientName, setClientName] = useState<string>("");
   const [clientEmail, setClientEmail] = useState<string>("");
   const [showSuccess, setShowSuccess] = useState(false);
@@ -30,7 +37,7 @@ const Payment = () => {
       features: ["Instant Transfer", "24/7 Available", "Zero Fees"],
       color: "from-blue-500 to-cyan-500",
       details: {
-        upiId: "mohit8052231582@paytm",
+        upiId: "mohit8052231582@oksbi",
         qrCode: "Show QR code for UPI payment"
       }
     },
@@ -145,7 +152,7 @@ PAYMENT DETAILS:
 
 PAYMENT INSTRUCTIONS:
 ${selectedPaymentMethod === 'upi' ? 
-  'Please transfer the amount to UPI ID: mohit8052231582@paytm' :
+  'Please transfer the amount to UPI ID: mohit8052231582@oksbi' :
   selectedPaymentMethod === 'bank-transfer' ?
   'Please transfer to the bank account details provided' :
   `Online payment gateway will be provided separately`
@@ -257,6 +264,37 @@ Mohit Shekhar
                 </CardTitle>
               </CardHeader>
               <CardContent>
+                {/* Selected Plan Display */}
+                {selectedPlan && (
+                  <motion.div 
+                    className="mb-6 p-4 bg-primary/5 border border-primary/20 rounded-lg"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    <div className="flex items-center justify-between mb-3">
+                      <h3 className="text-lg font-semibold text-primary">Selected Plan: {selectedPlan.name}</h3>
+                      <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">
+                        {selectedPlan.price}{selectedPlan.period}
+                      </Badge>
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-3">{selectedPlan.description}</p>
+                    <div className="grid grid-cols-2 gap-2">
+                      {selectedPlan.features.slice(0, 4).map((feature: string, index: number) => (
+                        <div key={index} className="flex items-center gap-2 text-xs text-muted-foreground">
+                          <CheckCircle className="h-3 w-3 text-primary flex-shrink-0" />
+                          <span>{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                    {selectedPlan.features.length > 4 && (
+                      <p className="text-xs text-muted-foreground mt-2">
+                        +{selectedPlan.features.length - 4} more features...
+                      </p>
+                    )}
+                  </motion.div>
+                )}
+                
                 <form onSubmit={handlePaymentSubmit} className="space-y-6">
                   {/* Basic Details */}
                   <div className="grid md:grid-cols-2 gap-4">
@@ -390,13 +428,35 @@ Mohit Shekhar
                             
                             {selectedPaymentMethod === 'upi' && (
                               <div className="space-y-4">
+                                {/* QR Code Section */}
+                                <div className="bg-white rounded-lg p-6 border border-primary/20 text-center">
+                                  <h5 className="font-semibold text-gray-800 mb-4 flex items-center justify-center gap-2">
+                                    <Smartphone className="h-5 w-5 text-primary" />
+                                    Scan QR Code to Pay
+                                  </h5>
+                                  <div className="inline-block p-4 bg-white rounded-lg shadow-lg border-2 border-gray-200">
+                                    <img 
+                                      src="/mohit-upi-qr.png" 
+                                      alt="UPI QR Code - Mohit Shekhar" 
+                                      className="w-48 h-48 mx-auto"
+                                    />
+                                  </div>
+                                  <p className="text-sm text-gray-600 mt-3">
+                                    <strong>Mohit Shekhar</strong>
+                                  </p>
+                                  <p className="text-xs text-gray-500">
+                                    Scan to pay with any UPI app
+                                  </p>
+                                </div>
+
+                                {/* UPI ID Section */}
                                 <div className="bg-white/10 rounded-lg p-4 border border-primary/20">
                                   <div className="flex items-center justify-between mb-2">
                                     <span className="font-medium text-foreground">UPI ID:</span>
                                     <Button
                                       size="sm"
                                       variant="ghost"
-                                      onClick={() => copyToClipboard("mohit8052231582@paytm", "upi")}
+                                      onClick={() => copyToClipboard("mohit8052231582@oksbi", "upi")}
                                       className="h-8 px-2"
                                     >
                                       {copiedField === "upi" ? (
@@ -407,12 +467,20 @@ Mohit Shekhar
                                     </Button>
                                   </div>
                                   <p className="font-mono text-primary bg-white/5 px-3 py-2 rounded border">
-                                    mohit8052231582@paytm
+                                    mohit8052231582@oksbi
                                   </p>
                                 </div>
+                                
                                 <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                   <CheckCircle className="h-4 w-4 text-green-500" />
                                   <span>Scan QR code or enter UPI ID in your payment app</span>
+                                </div>
+                                
+                                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3 border border-blue-200 dark:border-blue-800">
+                                  <p className="text-sm text-blue-800 dark:text-blue-200">
+                                    <strong>How to pay:</strong> Open any UPI app (Google Pay, PhonePe, Paytm, etc.) → 
+                                    Scan the QR code above → Enter amount → Complete payment
+                                  </p>
                                 </div>
                               </div>
                             )}

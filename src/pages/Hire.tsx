@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Send, Briefcase, Clock, DollarSign, Users, Loader2 } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Hire = () => {
   const navigate = useNavigate();
@@ -127,35 +128,64 @@ Submission Date: ${new Date().toLocaleDateString()}
   };
 
   return (
-    <div className="min-h-screen bg-gradient-hero pt-20">
+    <motion.div 
+      className="min-h-screen bg-gradient-hero pt-20"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+    >
       <div className="container mx-auto px-6 py-8">
         {/* Header */}
-        <div className="flex items-center gap-4 mb-8">
-          <Button 
-            variant="ghost" 
-            size="icon"
-            onClick={() => navigate('/')}
-            className="hover:bg-primary/10"
+        <motion.div 
+          className="flex items-center gap-4 mb-8"
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+        >
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
           >
-            <ArrowLeft className="h-5 w-5" />
-          </Button>
-          <div>
+            <Button 
+              variant="ghost" 
+              size="icon"
+              onClick={() => navigate('/')}
+              className="hover:bg-primary/10 transition-colors duration-300"
+            >
+              <ArrowLeft className="h-5 w-5" />
+            </Button>
+          </motion.div>
+          <motion.div
+            initial={{ x: -20, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+          >
             <h1 className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent">
               Let's Work Together
             </h1>
             <p className="text-muted-foreground mt-2">
               Tell me about your project and let's bring your ideas to life
             </p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Form Section */}
-          <div className="lg:col-span-2">
-            <Card className="bg-gradient-card border-border">
+          <motion.div 
+            className="lg:col-span-2"
+            initial={{ x: -30, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
+          >
+            <Card className="bg-gradient-card border-border shadow-2xl hover:shadow-3xl transition-shadow duration-500">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-foreground">
-                  <Briefcase className="h-6 w-6 text-primary" />
+                  <motion.div
+                    animate={{ rotate: [0, 10, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <Briefcase className="h-6 w-6 text-primary" />
+                  </motion.div>
                   Project Requirements
                 </CardTitle>
               </CardHeader>
@@ -347,87 +377,165 @@ Submission Date: ${new Date().toLocaleDateString()}
                 </form>
               </CardContent>
             </Card>
-          </div>
+          </motion.div>
 
           {/* Info Sidebar */}
-          <div className="space-y-6">
-            <Card className="bg-gradient-primary/10 border-primary/20">
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold mb-4 text-foreground">Why Work With Me?</h3>
-                <div className="space-y-3">
-                  <div className="flex items-start gap-3">
-                    <Clock className="h-5 w-5 text-primary mt-0.5" />
-                    <div>
-                      <h4 className="font-medium text-foreground">Quick Response</h4>
-                      <p className="text-sm text-muted-foreground">I respond to all inquiries within 24 hours</p>
-                    </div>
+          <motion.div 
+            className="space-y-6"
+            initial={{ x: 30, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
+          >
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+            >
+              <Card className="bg-gradient-primary/10 border-primary/20 hover:border-primary/30 transition-colors duration-300">
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-semibold mb-4 text-foreground">Why Work With Me?</h3>
+                  <div className="space-y-3">
+                    <motion.div 
+                      className="flex items-start gap-3"
+                      initial={{ x: -10, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ duration: 0.5, delay: 0.6, ease: "easeOut" }}
+                    >
+                      <motion.div
+                        animate={{ scale: [1, 1.1, 1] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <Clock className="h-5 w-5 text-primary mt-0.5" />
+                      </motion.div>
+                      <div>
+                        <h4 className="font-medium text-foreground">Quick Response</h4>
+                        <p className="text-sm text-muted-foreground">I respond to all inquiries within 24 hours</p>
+                      </div>
+                    </motion.div>
+                    <motion.div 
+                      className="flex items-start gap-3"
+                      initial={{ x: -10, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ duration: 0.5, delay: 0.7, ease: "easeOut" }}
+                    >
+                      <motion.div
+                        animate={{ rotate: [0, 15, 0] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <DollarSign className="h-5 w-5 text-primary mt-0.5" />
+                      </motion.div>
+                      <div>
+                        <h4 className="font-medium text-foreground">Transparent Pricing</h4>
+                        <p className="text-sm text-muted-foreground">Clear, upfront pricing with no hidden costs</p>
+                      </div>
+                    </motion.div>
+                    <motion.div 
+                      className="flex items-start gap-3"
+                      initial={{ x: -10, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ duration: 0.5, delay: 0.8, ease: "easeOut" }}
+                    >
+                      <motion.div
+                        animate={{ scale: [1, 1.05, 1] }}
+                        transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                      >
+                        <Users className="h-5 w-5 text-primary mt-0.5" />
+                      </motion.div>
+                      <div>
+                        <h4 className="font-medium text-foreground">Collaborative Approach</h4>
+                        <p className="text-sm text-muted-foreground">Regular updates and client involvement</p>
+                      </div>
+                    </motion.div>
                   </div>
-                  <div className="flex items-start gap-3">
-                    <DollarSign className="h-5 w-5 text-primary mt-0.5" />
-                    <div>
-                      <h4 className="font-medium text-foreground">Transparent Pricing</h4>
-                      <p className="text-sm text-muted-foreground">Clear, upfront pricing with no hidden costs</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Users className="h-5 w-5 text-primary mt-0.5" />
-                    <div>
-                      <h4 className="font-medium text-foreground">Collaborative Approach</h4>
-                      <p className="text-sm text-muted-foreground">Regular updates and client involvement</p>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </motion.div>
 
-            <Card className="bg-gradient-card border-border">
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold mb-4 text-foreground">My Expertise</h3>
-                <div className="space-y-2">
-                  <Badge variant="secondary">Android Development</Badge>
-                  <Badge variant="secondary">React/Next.js</Badge>
-                  <Badge variant="secondary">TypeScript</Badge>
-                  <Badge variant="secondary">Node.js</Badge>
-                  <Badge variant="secondary">Firebase</Badge>
-                  <Badge variant="secondary">API Development</Badge>
-                  <Badge variant="secondary">Database Design</Badge>
-                  <Badge variant="secondary">UI/UX Design</Badge>
-                </div>
-              </CardContent>
-            </Card>
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+            >
+              <Card className="bg-gradient-card border-border hover:border-primary/30 transition-colors duration-300">
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-semibold mb-4 text-foreground">My Expertise</h3>
+                  <motion.div 
+                    className="space-y-2"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.8, delay: 0.7 }}
+                  >
+                    {["Android Development", "React/Next.js", "TypeScript", "Node.js"].map((skill, index) => (
+                      <motion.div
+                        key={skill}
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{ duration: 0.4, delay: 0.8 + index * 0.1, ease: "easeOut" }}
+                      >
+                        <Badge variant="secondary" className="hover:bg-primary/20 transition-colors duration-300">
+                          {skill}
+                        </Badge>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+                </CardContent>
+              </Card>
+            </motion.div>
 
-            <Card className="bg-gradient-card border-border">
-              <CardContent className="p-6 text-center">
-                <h3 className="text-lg font-semibold mb-2 text-foreground">Need to Talk First?</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Prefer a quick call to discuss your project?
-                </p>
-                <Button variant="outline" className="w-full" asChild>
-                  <a href="mailto:mohit8052231582@gmail.com?subject=Quick Call Request">
-                    Schedule a Call
-                  </a>
-                </Button>
-              </CardContent>
-            </Card>
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.7, ease: "easeOut" }}
+            >
+              <Card className="bg-gradient-card border-border hover:border-primary/30 transition-colors duration-300">
+                <CardContent className="p-6 text-center">
+                  <h3 className="text-lg font-semibold mb-2 text-foreground">Need to Talk First?</h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Prefer a quick call to discuss your project?
+                  </p>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Button variant="outline" className="w-full hover:border-primary transition-colors duration-300" asChild>
+                      <a href="mailto:mohit8052231582@gmail.com?subject=Quick Call Request">
+                        Schedule a Call
+                      </a>
+                    </Button>
+                  </motion.div>
+                </CardContent>
+              </Card>
+            </motion.div>
 
-            <Card className="bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800">
-              <CardContent className="p-6 text-center">
-                <h3 className="text-lg font-semibold mb-2 text-foreground">Ready to Pay?</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Secure payment options for your project
-                </p>
-                <Button 
-                  className="w-full bg-green-600 hover:bg-green-700 text-white" 
-                  onClick={() => navigate('/payment')}
-                >
-                  Make Payment
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+            >
+              <Card className="bg-green-50 dark:bg-green-950/20 border-green-200 dark:border-green-800 hover:border-green-300 dark:hover:border-green-700 transition-colors duration-300">
+                <CardContent className="p-6 text-center">
+                  <h3 className="text-lg font-semibold mb-2 text-foreground">Ready to Pay?</h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Secure payment options for your project
+                  </p>
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Button 
+                      className="w-full bg-green-600 hover:bg-green-700 text-white transition-colors duration-300" 
+                      onClick={() => navigate('/payment')}
+                    >
+                      Make Payment
+                    </Button>
+                  </motion.div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

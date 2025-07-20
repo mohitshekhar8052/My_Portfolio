@@ -1,13 +1,17 @@
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Mail, ExternalLink } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import TypewriterText from "./TypewriterText";
 import FloatingElements from "./FloatingElements";
 import ScrollReveal from "./ScrollReveal";
 
 const Hero = () => {
   const ref = useRef<HTMLElement>(null);
+  const [isHireClicked, setIsHireClicked] = useState(false);
+  const navigate = useNavigate();
+  
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"]
@@ -26,6 +30,16 @@ const Hero = () => {
 
   const scrollToAbout = () => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleHireMe = () => {
+    setIsHireClicked(true);
+    
+    // Add animation delay before navigating to hire page
+    setTimeout(() => {
+      navigate('/hire');
+      setIsHireClicked(false);
+    }, 800);
   };
 
   return (
@@ -75,14 +89,67 @@ const Hero = () => {
                  >
                    <span className="group-hover:animate-pulse">View My Work</span>
                  </Button>
-                 <Button 
-                   variant="secondary" 
-                   size="lg" 
-                   onClick={scrollToAbout}
-                   className="hover:scale-105 transition-all duration-300"
+                 <motion.div
+                   animate={isHireClicked ? { 
+                     scale: [1, 1.05, 1.02, 1],
+                     rotate: [0, 2, -1, 0]
+                   } : {}}
+                   transition={{ 
+                     duration: 0.8, 
+                     ease: [0.25, 0.46, 0.45, 0.94],
+                     times: [0, 0.3, 0.7, 1]
+                   }}
                  >
-                   About Me
-                 </Button>
+                   <Button 
+                     variant="secondary" 
+                     size="lg" 
+                     onClick={handleHireMe}
+                     disabled={isHireClicked}
+                     className={`hover:scale-105 transition-all duration-300 group relative overflow-hidden ${
+                       isHireClicked ? 'cursor-wait' : ''
+                     }`}
+                   >
+                     <motion.span 
+                       className="flex items-center gap-2"
+                       animate={isHireClicked ? { x: [0, 4, 0] } : {}}
+                       transition={{ 
+                         duration: 0.4, 
+                         ease: "easeInOut",
+                         times: [0, 0.5, 1]
+                       }}
+                     >
+                       Hire Me
+                       <motion.div
+                         animate={isHireClicked ? { 
+                           scale: [1, 1.2, 1],
+                           rotate: [0, 180, 360] 
+                         } : {}}
+                         transition={{ 
+                           duration: 0.8, 
+                           ease: "easeInOut",
+                           times: [0, 0.4, 1]
+                         }}
+                       >
+                         <ExternalLink className="h-4 w-4 group-hover:animate-pulse" />
+                       </motion.div>
+                     </motion.span>
+                     
+                     {/* Loading overlay */}
+                     <motion.div
+                       className="absolute inset-0 bg-primary/15 backdrop-blur-sm rounded-lg"
+                       initial={{ opacity: 0, scale: 0.8 }}
+                       animate={isHireClicked ? { 
+                         opacity: [0, 0.8, 0],
+                         scale: [0.8, 1.1, 1]
+                       } : {}}
+                       transition={{ 
+                         duration: 0.8, 
+                         ease: "easeOut",
+                         times: [0, 0.3, 1]
+                       }}
+                     />
+                   </Button>
+                 </motion.div>
                </div>
 
                <div className="flex gap-6 justify-center lg:justify-start animate-fade-in delay-1200">
@@ -201,7 +268,7 @@ const Hero = () => {
                   />
                   
                   <motion.img 
-                    src="/lovable-uploads/8521a317-363c-4489-a602-54a76c79ee8a.png"
+                    src="/mohit-profile.png"
                     alt="Mohit Shekhar - Android Developer & Video Editor"
                     className="w-full h-full object-cover"
                     initial={{ scale: 1.1, filter: "brightness(1)" }}

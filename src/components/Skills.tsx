@@ -22,11 +22,11 @@ const Skills = () => {
       title: "Video Editing",
       icon: "🎬",
       skills: [
-        { name: "Adobe Premiere Pro", level: 50 },
-        { name: "After Effects", level: 85 },
-        { name: "DaVinci Resolve", level: 78 },
-        { name: "Motion Graphics", level: 80 },
-        { name: "Color Grading", level: 85 },
+        { name: "Adobe Premiere Pro", level: 68 },
+        { name: "After Effects", level: 45 },
+        { name: "DaVinci Resolve", level: 55 },
+        { name: "Motion Graphics", level: 55 },
+        { name: "Color Grading", level: 40 },
         { name: "Audio Editing", level: 75 }
       ]
     },
@@ -37,9 +37,9 @@ const Skills = () => {
         { name: "Data Structures", level: 60 },
         { name: "Algorithms", level: 85 },
         { name: "Problem Solving", level: 70 },
-        { name: "Time Complexity", level: 82 },
+        { name: "Time Complexity", level: 60 },
         { name: "System Design", level: 75 },
-        { name: "Competitive Programming", level: 80 }
+        { name: "Competitive Programming", level: 44 }
       ]
     }
   ];
@@ -51,7 +51,7 @@ const Skills = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-hero">
+    <section id="skills" className="py-20 bg-gradient-hero">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
@@ -106,7 +106,7 @@ const Skills = () => {
           <GlowingCard className="hover:scale-105 transition-transform duration-300">
             <div className="p-6 space-y-2">
               <h4 className="text-4xl font-bold text-primary">
-                <AnimatedCounter end={3} suffix="+" />
+                <AnimatedCounter end={1} suffix="+" />
               </h4>
               <p className="text-muted-foreground">Years of Experience</p>
             </div>
@@ -114,7 +114,7 @@ const Skills = () => {
           <GlowingCard className="hover:scale-105 transition-transform duration-300">
             <div className="p-6 space-y-2">
               <h4 className="text-4xl font-bold text-primary">
-                <AnimatedCounter end={50} suffix="+" duration={2500} />
+                <AnimatedCounter end={5} suffix="+" duration={2500} />
               </h4>
               <p className="text-muted-foreground">Projects Completed</p>
             </div>
@@ -122,7 +122,7 @@ const Skills = () => {
           <GlowingCard className="hover:scale-105 transition-transform duration-300">
             <div className="p-6 space-y-2">
               <h4 className="text-4xl font-bold text-primary">
-                <AnimatedCounter end={500} suffix="+" duration={3000} />
+                <AnimatedCounter end={120} suffix="+" duration={3000} />
               </h4>
               <p className="text-muted-foreground">DSA Problems Solved</p>
             </div>

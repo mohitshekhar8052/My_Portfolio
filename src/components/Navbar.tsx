@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Code } from "lucide-react";
+import { Menu, X, Code, ExternalLink } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isHireClicked, setIsHireClicked] = useState(false);
   const navigate = useNavigate();
 
   const navItems = [
@@ -22,6 +24,17 @@ const Navbar = () => {
       document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
     }
     setIsOpen(false);
+  };
+
+  const handleHireMe = () => {
+    setIsHireClicked(true);
+    
+    // Add animation delay before navigating to hire page
+    setTimeout(() => {
+      navigate('/hire');
+      setIsHireClicked(false);
+      setIsOpen(false); // Close mobile menu if open
+    }, 800);
   };
 
   return (
@@ -53,13 +66,66 @@ const Navbar = () => {
             >
               Payment
             </Button>
-            <Button 
-              size="sm" 
-              className="bg-gradient-primary hover:shadow-glow transition-all duration-300"
-              onClick={() => navigate('/hire')}
+            <motion.div
+              animate={isHireClicked ? { 
+                scale: [1, 1.05, 1.02, 1],
+                rotate: [0, 2, -1, 0]
+              } : {}}
+              transition={{ 
+                duration: 0.8, 
+                ease: [0.25, 0.46, 0.45, 0.94],
+                times: [0, 0.3, 0.7, 1]
+              }}
             >
-              Hire Me
-            </Button>
+              <Button 
+                size="sm" 
+                onClick={handleHireMe}
+                disabled={isHireClicked}
+                className={`bg-gradient-primary hover:shadow-glow transition-all duration-300 group relative overflow-hidden ${
+                  isHireClicked ? 'cursor-wait' : ''
+                }`}
+              >
+                <motion.span 
+                  className="flex items-center gap-2"
+                  animate={isHireClicked ? { x: [0, 2, 0] } : {}}
+                  transition={{ 
+                    duration: 0.4, 
+                    ease: "easeInOut",
+                    times: [0, 0.5, 1]
+                  }}
+                >
+                  Hire Me
+                  <motion.div
+                    animate={isHireClicked ? { 
+                      scale: [1, 1.2, 1],
+                      rotate: [0, 180, 360] 
+                    } : {}}
+                    transition={{ 
+                      duration: 0.8, 
+                      ease: "easeInOut",
+                      times: [0, 0.4, 1]
+                    }}
+                  >
+                    <ExternalLink className="h-3 w-3 group-hover:animate-pulse" />
+                  </motion.div>
+                </motion.span>
+                
+                {/* Loading overlay */}
+                <motion.div
+                  className="absolute inset-0 bg-primary/15 backdrop-blur-sm rounded"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={isHireClicked ? { 
+                    opacity: [0, 0.8, 0],
+                    scale: [0.8, 1.1, 1]
+                  } : {}}
+                  transition={{ 
+                    duration: 0.8, 
+                    ease: "easeOut",
+                    times: [0, 0.3, 1]
+                  }}
+                />
+              </Button>
+            </motion.div>
           </div>
 
           {/* Mobile menu button */}
@@ -95,13 +161,67 @@ const Navbar = () => {
               >
                 Payment
               </Button>
-              <Button 
-                size="sm" 
-                className="bg-gradient-primary hover:shadow-glow transition-all duration-300 w-fit"
-                onClick={() => navigate('/hire')}
+              <motion.div
+                animate={isHireClicked ? { 
+                  scale: [1, 1.05, 1.02, 1],
+                  rotate: [0, 2, -1, 0]
+                } : {}}
+                transition={{ 
+                  duration: 0.8, 
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                  times: [0, 0.3, 0.7, 1]
+                }}
+                className="w-fit"
               >
-                Hire Me
-              </Button>
+                <Button 
+                  size="sm" 
+                  onClick={handleHireMe}
+                  disabled={isHireClicked}
+                  className={`bg-gradient-primary hover:shadow-glow transition-all duration-300 group relative overflow-hidden ${
+                    isHireClicked ? 'cursor-wait' : ''
+                  }`}
+                >
+                  <motion.span 
+                    className="flex items-center gap-2"
+                    animate={isHireClicked ? { x: [0, 2, 0] } : {}}
+                    transition={{ 
+                      duration: 0.4, 
+                      ease: "easeInOut",
+                      times: [0, 0.5, 1]
+                    }}
+                  >
+                    Hire Me
+                    <motion.div
+                      animate={isHireClicked ? { 
+                        scale: [1, 1.2, 1],
+                        rotate: [0, 180, 360] 
+                      } : {}}
+                      transition={{ 
+                        duration: 0.8, 
+                        ease: "easeInOut",
+                        times: [0, 0.4, 1]
+                      }}
+                    >
+                      <ExternalLink className="h-3 w-3 group-hover:animate-pulse" />
+                    </motion.div>
+                  </motion.span>
+                  
+                  {/* Loading overlay */}
+                  <motion.div
+                    className="absolute inset-0 bg-primary/15 backdrop-blur-sm rounded"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={isHireClicked ? { 
+                      opacity: [0, 0.8, 0],
+                      scale: [0.8, 1.1, 1]
+                    } : {}}
+                    transition={{ 
+                      duration: 0.8, 
+                      ease: "easeOut",
+                      times: [0, 0.3, 1]
+                    }}
+                  />
+                </Button>
+              </motion.div>
             </div>
           </div>
         )}
