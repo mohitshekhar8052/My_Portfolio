@@ -26,7 +26,7 @@
   "bugs": {
     "url": "https://github.com/mohitshekhar8052/My_Portfolio/issues"
   },
-  "homepage": "https://github.com/mohitshekhar8052/My_Portfolio#readme",
+  "homepage": "https://mohitshekhar8052.github.io/My_Portfolio",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
