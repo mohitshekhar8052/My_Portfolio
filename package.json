@@ -1,5 +1,5 @@
 {
-  "name": "pixel-play-portfolio-craft",
+  "name": "my-portfolio",
   "description": "A modern, responsive portfolio website with hire me functionality and payment system",
   "version": "1.0.0",
   "type": "module",
@@ -8,7 +8,7 @@
     "email": "mohit8052231582@gmail.com",
     "url": "https://github.com/mohitshekhar8052"
   },
-  "license": "MIT",
+  "license": "Mohit Shekhar License",
   "keywords": [
     "portfolio",
     "react",
@@ -21,12 +21,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/mohitshekhar8052/pixel-play-portfolio-craft"
+    "url": "https://github.com/mohitshekhar8052/My_Portfolio"
   },
   "bugs": {
-    "url": "https://github.com/mohitshekhar8052/pixel-play-portfolio-craft/issues"
+    "url": "https://github.com/mohitshekhar8052/My_Portfolio/issues"
   },
-  "homepage": "https://github.com/mohitshekhar8052/pixel-play-portfolio-craft#readme",
+  "homepage": "https://github.com/mohitshekhar8052/My_Portfolio#readme",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -71,6 +71,7 @@
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.3.0",
     "framer-motion": "^12.23.6",
+    "gh-pages": "^6.3.0",
     "input-otp": "^1.2.4",
     "lucide-react": "^0.462.0",
     "next-themes": "^0.3.0",
