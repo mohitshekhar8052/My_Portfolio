@@ -29,5 +29,5 @@ export default defineConfig(({ mode }) => ({
     target: 'es2015',
     sourcemap: false
   },
-  base: '/My_Portfolio/',
+  base: '/my-portfolio',
 }));
