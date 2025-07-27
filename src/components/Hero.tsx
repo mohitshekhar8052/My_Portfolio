@@ -46,27 +46,27 @@ const Hero = () => {
     <motion.section 
       ref={ref}
       style={{ y, opacity }}
-      className="min-h-screen bg-gradient-hero flex items-center justify-center relative overflow-hidden"
+      className="min-h-screen bg-gradient-hero flex items-center justify-center relative overflow-hidden px-4 sm:px-6 lg:px-8"
     >
       <FloatingElements />
       
       {/* Enhanced background accent elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-1/2 -right-1/2 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-1/2 -left-1/2 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-primary/5 rounded-full blur-2xl animate-bounce delay-2000"></div>
+        <div className="absolute -top-1/2 -right-1/2 w-64 sm:w-96 h-64 sm:h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -bottom-1/2 -left-1/2 w-64 sm:w-96 h-64 sm:h-96 bg-accent/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/4 right-1/4 w-48 sm:w-64 h-48 sm:h-64 bg-primary/5 rounded-full blur-2xl animate-bounce delay-2000"></div>
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto max-w-7xl relative z-10">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Content */}
           <ScrollReveal direction="left" delay={0.2}>
-             <div className="text-center lg:text-left space-y-8">
+             <div className="text-center lg:text-left space-y-6 sm:space-y-8">
                <div className="space-y-4">
-                 <h1 className="text-5xl lg:text-7xl font-bold bg-gradient-primary bg-clip-text text-transparent animate-fade-in">
+                 <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-7xl font-bold bg-gradient-primary bg-clip-text text-transparent animate-fade-in">
                    Hello, I'm a
                  </h1>
-                 <div className="text-4xl lg:text-6xl font-bold text-foreground min-h-[1.2em]">
+                 <div className="text-2xl sm:text-3xl lg:text-4xl xl:text-6xl font-bold text-foreground min-h-[1.2em]">
                    <TypewriterText 
                      texts={typewriterTexts}
                      speed={150}
@@ -74,10 +74,10 @@ const Hero = () => {
                      delayBetween={2000}
                    />
                  </div>
-                 <p className="text-xl text-muted-foreground max-w-lg animate-fade-in delay-500">
+                 <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-lg mx-auto lg:mx-0 animate-fade-in delay-500">
                    Crafting digital experiences through code and visual storytelling
                  </p>
-                 <p className="text-lg text-muted-foreground max-w-lg animate-fade-in delay-700">
+                 <p className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-lg mx-auto lg:mx-0 animate-fade-in delay-700">
                    Passionate about mobile development, creative editing, and algorithmic problem solving
                  </p>
                </div>
@@ -85,7 +85,8 @@ const Hero = () => {
                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in delay-1000">
                  <Button 
                    size="lg" 
-                   className="bg-gradient-primary hover:shadow-glow transition-all duration-300 hover:scale-105 group"
+                   className="bg-gradient-primary hover:shadow-glow transition-all duration-300 hover:scale-105 group w-full sm:w-auto"
+                   onClick={scrollToAbout}
                  >
                    <span className="group-hover:animate-pulse">View My Work</span>
                  </Button>
@@ -99,13 +100,14 @@ const Hero = () => {
                      ease: [0.25, 0.46, 0.45, 0.94],
                      times: [0, 0.3, 0.7, 1]
                    }}
+                   className="w-full sm:w-auto"
                  >
                    <Button 
                      variant="secondary" 
                      size="lg" 
                      onClick={handleHireMe}
                      disabled={isHireClicked}
-                     className={`hover:scale-105 transition-all duration-300 group relative overflow-hidden ${
+                     className={`hover:scale-105 transition-all duration-300 group relative overflow-hidden w-full ${
                        isHireClicked ? 'cursor-wait' : ''
                      }`}
                    >
@@ -152,7 +154,7 @@ const Hero = () => {
                  </motion.div>
                </div>
 
-               <div className="flex gap-6 justify-center lg:justify-start animate-fade-in delay-1200">
+               <div className="flex gap-4 sm:gap-6 justify-center lg:justify-start animate-fade-in delay-1200">
                  <Button 
                    variant="ghost" 
                    size="icon" 
@@ -160,7 +162,7 @@ const Hero = () => {
                    asChild
                  >
                    <a href="https://github.com/mohitshekhar8052" target="_blank" rel="noopener noreferrer">
-                     <Github className="h-6 w-6" />
+                     <Github className="h-5 w-5 sm:h-6 sm:w-6" />
                    </a>
                  </Button>
                  <Button 
@@ -168,14 +170,14 @@ const Hero = () => {
                    size="icon" 
                    className="hover:text-primary hover:scale-110 transition-all duration-300 hover:rotate-12"
                  >
-                   <Linkedin className="h-6 w-6" />
+                   <Linkedin className="h-5 w-5 sm:h-6 sm:w-6" />
                  </Button>
                  <Button 
                    variant="ghost" 
                    size="icon" 
                    className="hover:text-primary hover:scale-110 transition-all duration-300 hover:rotate-12"
                  >
-                   <Mail className="h-6 w-6" />
+                   <Mail className="h-5 w-5 sm:h-6 sm:w-6" />
                  </Button>
                </div>
              </div>
@@ -238,20 +240,23 @@ const Hero = () => {
                   }}
                 />
                 
-                {/* Main premium container with glass effect */}
-                <div className="relative overflow-hidden backdrop-blur-sm" style={{
-                  width: '340px',
-                  height: '420px',
-                  borderRadius: '50%',
-                  border: '3px solid',
-                  borderImage: 'linear-gradient(45deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary))) 1',
-                  background: 'linear-gradient(135deg, hsl(var(--primary) / 0.15), hsl(var(--accent) / 0.15), hsl(var(--primary) / 0.1))',
-                  boxShadow: `
-                    0 0 60px hsl(var(--primary) / 0.4),
-                    inset 0 0 60px hsl(var(--accent) / 0.1),
-                    0 20px 40px hsl(var(--primary) / 0.2)
-                  `
-                }}>
+                {/* Main premium container with glass effect - Mobile responsive */}
+                <div 
+                  className="relative overflow-hidden backdrop-blur-sm"
+                  style={{
+                    width: 'min(280px, 80vw)',
+                    height: 'min(340px, 80vw)',
+                    borderRadius: '50%',
+                    border: '3px solid',
+                    borderImage: 'linear-gradient(45deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary))) 1',
+                    background: 'linear-gradient(135deg, hsl(var(--primary) / 0.15), hsl(var(--accent) / 0.15), hsl(var(--primary) / 0.1))',
+                    boxShadow: `
+                      0 0 60px hsl(var(--primary) / 0.4),
+                      inset 0 0 60px hsl(var(--accent) / 0.1),
+                      0 20px 40px hsl(var(--primary) / 0.2)
+                    `
+                  }}
+                >
                   {/* Shimmer effect overlay */}
                   <motion.div 
                     className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent"
@@ -302,9 +307,9 @@ const Hero = () => {
                   />
                 </div>
                 
-                {/* Enhanced floating skill icons with 3D effect */}
+                {/* Enhanced floating skill icons with 3D effect - Mobile responsive */}
                 <motion.div 
-                  className="absolute -top-6 -right-6 w-16 h-16 bg-gradient-to-br from-primary/30 to-primary/10 rounded-full flex items-center justify-center backdrop-blur-md border-2 border-primary/40 shadow-lg"
+                  className="absolute -top-4 sm:-top-6 -right-4 sm:-right-6 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-primary/30 to-primary/10 rounded-full flex items-center justify-center backdrop-blur-md border-2 border-primary/40 shadow-lg"
                   animate={{ 
                     y: [-8, 8, -8],
                     rotate: [0, 15, 0],
@@ -317,11 +322,11 @@ const Hero = () => {
                   }}
                   whileHover={{ scale: 1.2, rotate: 360 }}
                 >
-                  <span className="text-2xl">📱</span>
+                  <span className="text-lg sm:text-2xl">📱</span>
                 </motion.div>
                 
                 <motion.div 
-                  className="absolute -bottom-6 -left-6 w-16 h-16 bg-gradient-to-br from-accent/30 to-accent/10 rounded-full flex items-center justify-center backdrop-blur-md border-2 border-accent/40 shadow-lg"
+                  className="absolute -bottom-4 sm:-bottom-6 -left-4 sm:-left-6 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-accent/30 to-accent/10 rounded-full flex items-center justify-center backdrop-blur-md border-2 border-accent/40 shadow-lg"
                   animate={{ 
                     y: [8, -8, 8],
                     rotate: [0, -15, 0],
@@ -335,11 +340,11 @@ const Hero = () => {
                   }}
                   whileHover={{ scale: 1.2, rotate: -360 }}
                 >
-                  <span className="text-2xl">🎬</span>
+                  <span className="text-lg sm:text-2xl">🎬</span>
                 </motion.div>
                 
                 <motion.div 
-                  className="absolute top-12 -left-10 w-14 h-14 bg-gradient-to-br from-primary/25 to-primary/5 rounded-full flex items-center justify-center backdrop-blur-md border-2 border-primary/30 shadow-lg"
+                  className="absolute top-8 sm:top-12 -left-6 sm:-left-10 w-10 h-10 sm:w-14 sm:h-14 bg-gradient-to-br from-primary/25 to-primary/5 rounded-full flex items-center justify-center backdrop-blur-md border-2 border-primary/30 shadow-lg"
                   animate={{ 
                     x: [-6, 6, -6],
                     y: [-4, 4, -4],
@@ -353,11 +358,11 @@ const Hero = () => {
                   }}
                   whileHover={{ scale: 1.3, rotate: 180 }}
                 >
-                  <span className="text-xl">⚡</span>
+                  <span className="text-base sm:text-xl">⚡</span>
                 </motion.div>
                 
                 <motion.div 
-                  className="absolute bottom-16 -right-10 w-14 h-14 bg-gradient-to-br from-accent/25 to-accent/5 rounded-full flex items-center justify-center backdrop-blur-md border-2 border-accent/30 shadow-lg"
+                  className="absolute bottom-12 sm:bottom-16 -right-6 sm:-right-10 w-10 h-10 sm:w-14 sm:h-14 bg-gradient-to-br from-accent/25 to-accent/5 rounded-full flex items-center justify-center backdrop-blur-md border-2 border-accent/30 shadow-lg"
                   animate={{ 
                     x: [6, -6, 6],
                     y: [4, -4, 4],
@@ -371,14 +376,14 @@ const Hero = () => {
                   }}
                   whileHover={{ scale: 1.3, rotate: -180 }}
                 >
-                  <span className="text-xl">🧠</span>
+                  <span className="text-base sm:text-xl">🧠</span>
                 </motion.div>
 
-                {/* Particle effects */}
+                {/* Particle effects - Mobile responsive */}
                 {[...Array(6)].map((_, i) => (
                   <motion.div
                     key={i}
-                    className="absolute w-2 h-2 bg-primary/60 rounded-full"
+                    className="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary/60 rounded-full"
                     style={{
                       top: `${20 + i * 15}%`,
                       right: `${-5 + (i % 2) * 10}%`,

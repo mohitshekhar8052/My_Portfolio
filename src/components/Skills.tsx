@@ -51,27 +51,27 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 bg-gradient-hero">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
+    <section id="skills" className="spacing-mobile-y bg-gradient-hero">
+      <div className="container mx-auto spacing-mobile">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="heading-mobile-1 mb-4 sm:mb-6 bg-gradient-primary bg-clip-text text-transparent">
             Skills & Expertise
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="body-mobile text-muted-foreground max-w-3xl mx-auto">
             A comprehensive overview of my technical skills and proficiency levels across different domains.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-mobile mb-12 sm:mb-16">
           {skillCategories.map((category, index) => (
-            <GlowingCard key={index} className="group hover:scale-105 transition-transform duration-300">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3 text-foreground group-hover:text-primary transition-colors duration-300">
-                  <span className="text-2xl group-hover:animate-bounce">{category.icon}</span>
+            <GlowingCard key={index} className="group hover:scale-105 transition-transform duration-300 touch-manipulation">
+              <CardHeader className="pb-3 sm:pb-6">
+                <CardTitle className="flex items-center gap-2 sm:gap-3 text-foreground group-hover:text-primary transition-colors duration-300 text-base sm:text-lg">
+                  <span className="text-xl sm:text-2xl group-hover:animate-bounce">{category.icon}</span>
                   {category.title}
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-3 sm:space-y-4 pt-0">
                 {category.skills.map((skill, skillIndex) => (
                   <AnimatedSkillBar 
                     key={skillIndex}
@@ -85,15 +85,15 @@ const Skills = () => {
           ))}
         </div>
 
-        <GlowingCard glowColor="accent" className="mb-16">
-          <div className="p-8">
-            <h3 className="text-2xl font-bold text-center mb-8 text-foreground">Tools & Technologies</h3>
-            <div className="flex flex-wrap gap-3 justify-center">
+        <GlowingCard glowColor="accent" className="mb-12 sm:mb-16 touch-manipulation">
+          <div className="card-mobile">
+            <h3 className="heading-mobile-2 text-center mb-6 sm:mb-8 text-foreground">Tools & Technologies</h3>
+            <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
               {tools.map((tool, index) => (
                 <Badge 
                   key={index} 
                   variant="secondary" 
-                  className="px-4 py-2 text-sm hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 cursor-pointer"
+                  className="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 cursor-pointer touch-manipulation tap-target"
                 >
                   {tool}
                 </Badge>

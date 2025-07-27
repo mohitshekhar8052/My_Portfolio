@@ -184,12 +184,12 @@ Mohit Shekhar
       exit="out"
       variants={pageVariants}
       transition={pageTransition}
-      className="min-h-screen bg-gradient-hero py-12 px-6"
+      className="min-h-screen bg-gradient-hero py-8 sm:py-12 px-4 sm:px-6"
     >
       <div className="container mx-auto max-w-6xl">
         {/* Header */}
         <motion.div 
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
           initial={{ y: -50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}
@@ -210,7 +210,7 @@ Mohit Shekhar
           </motion.div>
           
           <motion.h1 
-            className="text-4xl lg:text-6xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent"
+            className="text-2xl sm:text-3xl lg:text-4xl xl:text-6xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent"
             initial={{ scale: 0.5 }}
             animate={{ scale: 1 }}
             transition={{ type: "spring", bounce: 0.3, delay: 0.3 }}

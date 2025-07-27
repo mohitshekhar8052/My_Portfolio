@@ -62,34 +62,34 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 px-4 relative overflow-hidden">
+    <section id="projects" className="spacing-mobile-y spacing-mobile relative overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background/50 to-background"></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 sm:w-96 h-64 sm:h-96 bg-primary/5 rounded-full blur-3xl"></div>
       
-      <div className="container mx-auto px-6 relative">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
+      <div className="container mx-auto relative">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="heading-mobile-1 mb-4 sm:mb-6 bg-gradient-primary bg-clip-text text-transparent">
             Featured Projects
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="body-mobile text-muted-foreground max-w-3xl mx-auto">
             A showcase of my work across Android development, video editing, and programming projects.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-mobile">
           {projects.map((project, index) => (
-            <div key={index} className="animate-fade-in" style={{ animationDelay: `${index * 100}ms` }}>
+            <div key={index} className="animate-fade-in touch-manipulation" style={{ animationDelay: `${index * 100}ms` }}>
               <ProjectCard {...project} />
             </div>
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        <div className="text-center mt-8 sm:mt-12">
           <Button 
             size="lg" 
             variant="secondary"
-            className="hover:scale-105 transition-all duration-300 hover:shadow-glow"
+            className="btn-mobile hover:scale-105 transition-all duration-300 hover:shadow-glow touch-manipulation tap-target"
           >
             View All Projects
           </Button>

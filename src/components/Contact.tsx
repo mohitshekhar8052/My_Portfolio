@@ -39,43 +39,43 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-gradient-hero">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
+    <section id="contact" className="spacing-mobile-y bg-gradient-hero">
+      <div className="container mx-auto spacing-mobile">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="heading-mobile-1 mb-4 sm:mb-6 bg-gradient-primary bg-clip-text text-transparent">
             Let's Work Together
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="body-mobile text-muted-foreground max-w-3xl mx-auto">
             Ready to bring your ideas to life? Let's discuss your next project and create something amazing together.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-mobile">
           {/* Contact Form */}
-          <Card className="bg-gradient-card border-border">
-            <CardHeader>
-              <CardTitle className="text-2xl text-foreground">Send a Message</CardTitle>
+          <Card className="bg-gradient-card border-border touch-manipulation">
+            <CardHeader className="pb-4 sm:pb-6">
+              <CardTitle className="heading-mobile-3 text-foreground">Send a Message</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="grid sm:grid-cols-2 gap-4">
+            <CardContent className="space-y-4 sm:space-y-6 pt-0">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-foreground">First Name</label>
-                  <Input placeholder="Name" className="bg-secondary border-border" />
+                  <label className="caption-mobile font-medium text-foreground">First Name</label>
+                  <Input placeholder="Name" className="bg-secondary border-border tap-target" />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-foreground">Last Name</label>
-                  <Input placeholder="Last Name" className="bg-secondary border-border" />
+                  <label className="caption-mobile font-medium text-foreground">Last Name</label>
+                  <Input placeholder="Last Name" className="bg-secondary border-border tap-target" />
                 </div>
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground">Email</label>
-                <Input type="email" placeholder="developer@gami.com" className="bg-secondary border-border" />
+                <label className="caption-mobile font-medium text-foreground">Email</label>
+                <Input type="email" placeholder="developer@gami.com" className="bg-secondary border-border tap-target" />
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground">Subject</label>
-                <Input placeholder="Project Discussion" className="bg-secondary border-border" />
+                <label className="caption-mobile font-medium text-foreground">Subject</label>
+                <Input placeholder="Project Discussion" className="bg-secondary border-border tap-target" />
               </div>
               
               <div className="space-y-2">

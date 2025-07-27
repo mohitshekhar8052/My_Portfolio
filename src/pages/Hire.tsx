@@ -129,12 +129,12 @@ Submission Date: ${new Date().toLocaleDateString()}
 
   return (
     <motion.div 
-      className="min-h-screen bg-gradient-hero pt-20"
+      className="min-h-screen bg-gradient-hero pt-16 sm:pt-20"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
-      <div className="container mx-auto px-6 py-8">
+      <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-8">
         {/* Header */}
         <motion.div 
           className="flex items-center gap-4 mb-8"
@@ -160,16 +160,16 @@ Submission Date: ${new Date().toLocaleDateString()}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           >
-            <h1 className="text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-primary bg-clip-text text-transparent">
               Let's Work Together
             </h1>
-            <p className="text-muted-foreground mt-2">
+            <p className="text-sm sm:text-base text-muted-foreground mt-2">
               Tell me about your project and let's bring your ideas to life
             </p>
           </motion.div>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
           {/* Form Section */}
           <motion.div 
             className="lg:col-span-2"

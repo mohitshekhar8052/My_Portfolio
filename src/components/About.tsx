@@ -26,26 +26,26 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 px-4 relative overflow-hidden">
+    <section id="about" className="py-12 sm:py-16 lg:py-20 spacing-mobile relative overflow-hidden">
       {/* Background effects */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-background/50 to-background"></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 sm:w-96 h-64 sm:h-96 bg-primary/5 rounded-full blur-3xl"></div>
       
-      <div className="container mx-auto px-6 relative">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
+      <div className="container mx-auto relative">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="heading-mobile-1 mb-4 sm:mb-6 bg-gradient-primary bg-clip-text text-transparent">
             About Me
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="body-mobile text-muted-foreground max-w-3xl mx-auto">
             I'm a passionate developer who combines technical expertise with creative vision. 
             My journey spans mobile development, video editing, and algorithmic problem solving.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-          <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-foreground">My Journey</h3>
-            <div className="space-y-4 text-muted-foreground">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center mb-12 sm:mb-16">
+          <div className="space-y-4 sm:space-y-6">
+            <h3 className="heading-mobile-2 text-foreground">My Journey</h3>
+            <div className="space-y-3 sm:space-y-4 text-muted-foreground">
               <p className="hover:text-foreground transition-colors duration-300">
                 Started my tech journey with a curiosity for how mobile apps work, which led me 
                 to dive deep into Android development. Along the way, I discovered my passion 
@@ -62,22 +62,22 @@ const About = () => {
             </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {highlights.map((item, index) => (
-              <GlowingCard key={index} className="hover:scale-105 transition-transform duration-300">
-                <div className="p-6 text-center">
-                  <item.icon className="h-12 w-12 text-primary mx-auto mb-4 hover:scale-110 transition-transform duration-300" />
-                  <h4 className="text-lg font-semibold mb-2 text-foreground">{item.title}</h4>
-                  <p className="text-sm text-muted-foreground">{item.description}</p>
+              <GlowingCard key={index} className="hover:scale-105 transition-transform duration-300 touch-manipulation">
+                <div className="card-mobile text-center">
+                  <item.icon className="h-10 w-10 sm:h-12 sm:w-12 text-primary mx-auto mb-3 sm:mb-4 hover:scale-110 transition-transform duration-300" />
+                  <h4 className="text-base sm:text-lg font-semibold mb-2 text-foreground">{item.title}</h4>
+                  <p className="caption-mobile">{item.description}</p>
                 </div>
               </GlowingCard>
             ))}
           </div>
         </div>
 
-        <GlowingCard glowColor="accent" className="hover:scale-102 transition-transform duration-300">
-          <div className="p-8">
-            <h3 className="text-2xl font-bold text-center mb-6 text-foreground">What Drives Me</h3>
+        <GlowingCard glowColor="accent" className="hover:scale-102 transition-transform duration-300 touch-manipulation">
+          <div className="card-mobile">
+            <h3 className="heading-mobile-2 text-center mb-4 sm:mb-6 text-foreground">What Drives Me</h3>
             <div className="grid md:grid-cols-3 gap-8 text-center">
               <div className="group hover:scale-105 transition-transform duration-300">
                 <h4 className="text-lg font-semibold mb-2 text-primary group-hover:text-accent transition-colors duration-300">Innovation</h4>
