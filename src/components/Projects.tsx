@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import ProjectCard from "./ProjectCard";
+import { SplineSceneBasic } from "@/components/ui/demo";
 
 const Projects = () => {
   const projects = [
@@ -75,6 +76,19 @@ const Projects = () => {
           <p className="body-mobile text-muted-foreground max-w-3xl mx-auto">
             A showcase of my work across Android development, video editing, and programming projects.
           </p>
+        </div>
+
+        {/* Interactive 3D Showcase */}
+        <div className="mb-12 sm:mb-16 animate-fade-in">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-foreground">
+              Interactive 3D Experience
+            </h3>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Bringing creativity to life with immersive 3D scenes and interactive experiences
+            </p>
+          </div>
+          <SplineSceneBasic />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-mobile">
