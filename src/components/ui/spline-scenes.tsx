@@ -33,13 +33,13 @@ export function SplineScene({ scene, className, priority = false }: SplineSceneP
   )
 }
 
-// Hero background scene - Reduced opacity for better performance
+// Hero background scene - Properly sized and positioned
 export function HeroSplineScene() {
   return (
-    <div className="absolute inset-0 opacity-15 pointer-events-none">
+    <div className="absolute inset-0 opacity-20 pointer-events-none">
       <SplineScene 
         scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-        className="w-full h-full"
+        className="w-full h-full object-cover"
         priority={true}
       />
     </div>
