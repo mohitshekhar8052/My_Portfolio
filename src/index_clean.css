@@ -1,8 +1,9 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Modern developer portfolio design system - Dark Mode Only */
+/* Optimized developer portfolio design system - Performance focused */
 
 @layer base {
   :root {
@@ -40,10 +41,6 @@
     --gradient-card: linear-gradient(135deg, hsl(220 13% 9%), hsl(220 13% 11%));
     --shadow-glow: 0 0 30px hsl(142 76% 36% / 0.3);
     --shadow-card: 0 10px 30px -5px hsl(220 13% 0% / 0.5);
-    /* Custom animation utilities */
-    --animate-fade-in: fade-in 0.6s ease-out forwards; 
-    --animate-scale-in: scale-in 0.3s ease-out forwards;
-    --animate-slide-up: slide-up 0.5s ease-out forwards;
 
     --radius: 0.5rem;
 
@@ -66,13 +63,28 @@
   body {
     @apply bg-background text-foreground;
   }
+  
+  /* Performance optimizations */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Reduce motion for better performance */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
 
-/* Custom animations */
+/* Optimized animations */
 @keyframes fade-in {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -83,7 +95,7 @@
 @keyframes scale-in {
   from {
     opacity: 0;
-    transform: scale(0.9);
+    transform: scale(0.95);
   }
   to {
     opacity: 1;
@@ -94,7 +106,7 @@
 @keyframes slide-up {
   from {
     opacity: 0;  
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -102,15 +114,30 @@
   }
 }
 
-/* Utility classes */
+/* Utility classes with GPU acceleration */
 .animate-fade-in {
   animation: fade-in 0.6s ease-out forwards;
+  will-change: transform, opacity;
+  transform: translateZ(0);
 }
 
 .animate-scale-in {
   animation: scale-in 0.3s ease-out forwards;
+  will-change: transform, opacity;
+  transform: translateZ(0);
 }
 
 .animate-slide-up {
   animation: slide-up 0.5s ease-out forwards;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+
+/* Performance optimized hover states */
+.hover\:scale-105:hover {
+  transform: scale(1.05) translateZ(0);
+}
+
+.hover\:scale-110:hover {
+  transform: scale(1.1) translateZ(0);
 }
