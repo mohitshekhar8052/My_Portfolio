@@ -36,12 +36,14 @@ export function SplineScene({ scene, className, priority = false }: SplineSceneP
 // Hero background scene - Properly sized and positioned
 export function HeroSplineScene() {
   return (
-    <div className="absolute inset-0 opacity-20 pointer-events-none">
-      <SplineScene 
-        scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-        className="w-full h-full object-cover"
-        priority={true}
-      />
+    <div className="absolute inset-0 opacity-30 pointer-events-none overflow-hidden">
+      <div className="w-full h-full flex items-center justify-center">
+        <SplineScene 
+          scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
+          className="w-full h-full min-w-[800px] min-h-[600px] scale-75 md:scale-100"
+          priority={true}
+        />
+      </div>
     </div>
   )
 }
