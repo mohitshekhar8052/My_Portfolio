@@ -28,9 +28,9 @@ export function SplineScene({ scene, className }: SplineSceneProps) {
 // Hero background scene
 export function HeroSplineScene() {
   return (
-    <div className="absolute inset-0 opacity-20">
+    <div className="absolute inset-0 opacity-30">
       <SplineScene 
-        scene="https://prod.spline.design/6Wq1Q7YGyM-iab9H/scene.splinecode"
+        scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
         className="w-full h-full"
       />
     </div>
@@ -42,7 +42,7 @@ export function AboutSplineScene() {
   return (
     <div className="w-full h-[400px] rounded-lg overflow-hidden">
       <SplineScene 
-        scene="https://prod.spline.design/pwrldTgGRly0dVjy/scene.splinecode"
+        scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
         className="w-full h-full"
       />
     </div>
@@ -54,7 +54,7 @@ export function SkillsSplineScene() {
   return (
     <div className="w-full h-[350px] rounded-lg overflow-hidden">
       <SplineScene 
-        scene="https://prod.spline.design/7M8VZkgpBJLAkq6j/scene.splinecode"
+        scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
         className="w-full h-full"
       />
     </div>
@@ -64,9 +64,9 @@ export function SkillsSplineScene() {
 // Contact section background
 export function ContactSplineScene() {
   return (
-    <div className="absolute inset-0 opacity-10">
+    <div className="absolute inset-0 opacity-15">
       <SplineScene 
-        scene="https://prod.spline.design/M4CjKzNNRK-UWHcU/scene.splinecode"
+        scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
         className="w-full h-full"
       />
     </div>
