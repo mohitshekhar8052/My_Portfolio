@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import TypewriterText from "./TypewriterText";
 import FloatingElements from "./FloatingElements";
 import ScrollReveal from "./ScrollReveal";
+import { HeroSplineScene } from "@/components/ui/spline-scenes";
 
 const Hero = () => {
   const ref = useRef<HTMLElement>(null);
@@ -48,6 +49,9 @@ const Hero = () => {
       style={{ y, opacity }}
       className="min-h-screen bg-gradient-hero flex items-center justify-center relative overflow-hidden px-4 sm:px-6 lg:px-8"
     >
+      {/* 3D Background */}
+      <HeroSplineScene />
+      
       <FloatingElements />
       
       {/* Enhanced background accent elements */}

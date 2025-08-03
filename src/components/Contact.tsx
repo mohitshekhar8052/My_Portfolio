@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Download, FileText, Eye, Code, Trophy, Briefcase, CreditCard } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { ContactSplineScene } from "@/components/ui/spline-scenes";
 
 const Contact = () => {
   const navigate = useNavigate();
@@ -39,8 +40,11 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="spacing-mobile-y bg-gradient-hero">
-      <div className="container mx-auto spacing-mobile">
+    <section id="contact" className="spacing-mobile-y bg-gradient-hero relative overflow-hidden">
+      {/* 3D Background */}
+      <ContactSplineScene />
+      
+      <div className="container mx-auto spacing-mobile relative z-10">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="heading-mobile-1 mb-4 sm:mb-6 bg-gradient-primary bg-clip-text text-transparent">
             Let's Work Together
