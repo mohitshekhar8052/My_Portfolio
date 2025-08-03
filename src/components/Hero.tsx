@@ -132,38 +132,49 @@ const Hero = () => {
              </div>
           </ScrollReveal>
 
-          {/* Optimized Profile Image */}
+          {/* Enhanced Profile Image */}
           <ScrollReveal direction="right" delay={0.4}>
             <div className="flex justify-center lg:justify-end">
               <div className="relative group cursor-pointer">
-                {/* Simplified background glow */}
-                <div className="absolute -inset-12 bg-gradient-primary/10 rounded-full blur-2xl"></div>
+                {/* Enhanced background glow with animation */}
+                <div className="absolute -inset-16 bg-gradient-primary/20 rounded-full blur-3xl opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+                <div className="absolute -inset-8 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full blur-xl animate-pulse"></div>
                 
-                {/* Main container with glass effect */}
+                {/* Main container with enhanced glass effect */}
                 <div 
-                  className="relative overflow-hidden backdrop-blur-sm border-2 border-primary/30 rounded-full"
+                  className="relative overflow-hidden backdrop-blur-lg border-2 border-primary/40 rounded-full shadow-2xl group-hover:border-primary/60 transition-all duration-500"
                   style={{
-                    width: 'min(280px, 80vw)',
-                    height: 'min(340px, 80vw)',
-                    background: 'linear-gradient(135deg, hsl(var(--primary) / 0.1), hsl(var(--accent) / 0.1))',
-                    boxShadow: '0 0 40px hsl(var(--primary) / 0.2)'
+                    width: 'min(320px, 85vw)',
+                    height: 'min(320px, 85vw)',
+                    background: 'linear-gradient(135deg, hsl(var(--primary) / 0.15), hsl(var(--accent) / 0.15), hsl(var(--background) / 0.1))',
+                    boxShadow: '0 0 60px hsl(var(--primary) / 0.3), inset 0 0 40px hsl(var(--background) / 0.1)'
                   }}
                 >
                   <img 
                     src="/mohit-profile.png"
                     alt="Mohit Shekhar - Android Developer & Video Editor"
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    className="w-full h-full object-cover object-center transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
+                    style={{
+                      filter: 'contrast(1.1) saturate(1.1)'
+                    }}
                   />
+                  
+                  {/* Overlay gradient for depth */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
                 
-                {/* Simplified floating icons */}
-                <div className="absolute -top-6 -right-6 w-14 h-14 bg-primary/20 rounded-full flex items-center justify-center backdrop-blur-md border border-primary/30">
-                  <span className="text-xl">📱</span>
+                {/* Enhanced floating icons with better positioning */}
+                <div className="absolute -top-8 -right-8 w-16 h-16 bg-primary/30 rounded-full flex items-center justify-center backdrop-blur-xl border-2 border-primary/40 shadow-lg hover:scale-110 transition-transform duration-300">
+                  <span className="text-2xl">📱</span>
                 </div>
                 
-                <div className="absolute -bottom-6 -left-6 w-14 h-14 bg-accent/20 rounded-full flex items-center justify-center backdrop-blur-md border border-accent/30">
-                  <span className="text-xl">🎬</span>
+                <div className="absolute -bottom-8 -left-8 w-16 h-16 bg-accent/30 rounded-full flex items-center justify-center backdrop-blur-xl border-2 border-accent/40 shadow-lg hover:scale-110 transition-transform duration-300">
+                  <span className="text-2xl">🎬</span>
                 </div>
+                
+                {/* Additional decorative elements */}
+                <div className="absolute top-1/4 -left-4 w-3 h-3 bg-primary/60 rounded-full animate-ping"></div>
+                <div className="absolute bottom-1/3 -right-4 w-2 h-2 bg-accent/60 rounded-full animate-ping delay-1000"></div>
               </div>
             </div>
           </ScrollReveal>
