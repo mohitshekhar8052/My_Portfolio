@@ -4,7 +4,6 @@ import AnimatedSkillBar from "./AnimatedSkillBar";
 import AnimatedCounter from "./AnimatedCounter";
 import GlowingCard from "./GlowingCard";
 import ScrollReveal from "./ScrollReveal";
-import { SkillsSplineScene } from "@/components/ui/spline-scenes";
 
 const Skills = () => {
   const skillCategories = [
@@ -130,21 +129,6 @@ const Skills = () => {
             </div>
           </GlowingCard>
         </div>
-
-        {/* 3D Skills Visualization */}
-        <ScrollReveal>
-          <div className="mt-12 sm:mt-16">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-foreground">
-                Skills in 3D
-              </h3>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Visualizing my technical expertise through interactive 3D elements
-              </p>
-            </div>
-            <SkillsSplineScene />
-          </div>
-        </ScrollReveal>
       </div>
     </section>
   );

@@ -1,7 +1,6 @@
 import GlowingCard from "./GlowingCard";
 import { Code, Video, Brain, Award } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
-import { AboutSplineScene } from "@/components/ui/spline-scenes";
 
 const About = () => {
   const highlights = [
@@ -102,21 +101,6 @@ const About = () => {
             </div>
           </div>
         </GlowingCard>
-
-        {/* Interactive 3D Element */}
-        <ScrollReveal>
-          <div className="mt-12 sm:mt-16">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-foreground">
-                Interactive Experience
-              </h3>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Explore my journey through this interactive 3D experience
-              </p>
-            </div>
-            <AboutSplineScene />
-          </div>
-        </ScrollReveal>
       </div>
     </section>
   );

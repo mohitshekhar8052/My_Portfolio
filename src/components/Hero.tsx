@@ -45,7 +45,7 @@ const Hero = () => {
     <motion.section 
       ref={ref}
       style={{ y, opacity }}
-      className="min-h-screen bg-gradient-hero flex items-center justify-center relative overflow-hidden px-4 sm:px-6 lg:px-8"
+      className="min-h-screen bg-gradient-hero flex items-center justify-center relative overflow-hidden px-2 sm:px-3 lg:px-4"
     >
       {/* 3D Background - Optimized */}
       <HeroSplineScene />
@@ -57,10 +57,10 @@ const Hero = () => {
       </div>
 
       <div className="container mx-auto max-w-7xl relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-[2fr_1fr] gap-12 lg:gap-20 items-center">
           {/* Content */}
           <ScrollReveal direction="left" delay={0.2}>
-             <div className="text-center lg:text-left space-y-6 sm:space-y-8">
+             <div className="text-center lg:text-left space-y-6 sm:space-y-8 lg:pr-4">
                <div className="space-y-4">
                  <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-7xl font-bold bg-gradient-primary bg-clip-text text-transparent animate-fade-in">
                    Hello, I'm a
@@ -134,18 +134,18 @@ const Hero = () => {
 
           {/* Enhanced Profile Image */}
           <ScrollReveal direction="right" delay={0.4}>
-            <div className="flex justify-center lg:justify-end">
+            <div className="absolute right-0 top-1/2 transform -translate-y-1/2 lg:relative lg:right-auto lg:top-auto lg:transform-none flex justify-center lg:justify-end">
               <div className="relative group cursor-pointer">
                 {/* Enhanced background glow with animation */}
-                <div className="absolute -inset-16 bg-gradient-primary/20 rounded-full blur-3xl opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
-                <div className="absolute -inset-8 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full blur-xl animate-pulse"></div>
+                <div className="absolute -inset-16 bg-gradient-primary/20 rounded-3xl blur-3xl opacity-60 group-hover:opacity-80 transition-opacity duration-500"></div>
+                <div className="absolute -inset-8 bg-gradient-to-r from-primary/10 to-accent/10 rounded-2xl blur-xl animate-pulse"></div>
                 
                 {/* Main container with enhanced glass effect */}
                 <div 
-                  className="relative overflow-hidden backdrop-blur-lg border-2 border-primary/40 rounded-full shadow-2xl group-hover:border-primary/60 transition-all duration-500"
+                  className="relative overflow-hidden backdrop-blur-lg border-2 border-primary/40 rounded-3xl shadow-2xl group-hover:border-primary/60 transition-all duration-500"
                   style={{
-                    width: 'min(320px, 85vw)',
-                    height: 'min(320px, 85vw)',
+                    width: 'min(380px, 90vw)',
+                    height: 'min(480px, 90vh)',
                     background: 'linear-gradient(135deg, hsl(var(--primary) / 0.15), hsl(var(--accent) / 0.15), hsl(var(--background) / 0.1))',
                     boxShadow: '0 0 60px hsl(var(--primary) / 0.3), inset 0 0 40px hsl(var(--background) / 0.1)'
                   }}
@@ -173,15 +173,15 @@ const Hero = () => {
                 </div>
                 
                 {/* Additional decorative elements */}
-                <div className="absolute top-1/4 -left-4 w-3 h-3 bg-primary/60 rounded-full animate-ping"></div>
-                <div className="absolute bottom-1/3 -right-4 w-2 h-2 bg-accent/60 rounded-full animate-ping delay-1000"></div>
+                <div className="absolute top-1/3 -left-4 w-3 h-3 bg-primary/60 rounded-full animate-ping"></div>
+                <div className="absolute bottom-1/4 -right-4 w-2 h-2 bg-accent/60 rounded-full animate-ping delay-1000"></div>
               </div>
             </div>
           </ScrollReveal>
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center">
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-center">
           <Button 
             variant="ghost" 
             size="sm" 

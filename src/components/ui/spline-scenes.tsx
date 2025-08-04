@@ -8,9 +8,10 @@ interface SplineSceneProps {
   scene: string
   className?: string
   priority?: boolean
+  enableMouseTracking?: boolean
 }
 
-export function SplineScene({ scene, className, priority = false }: SplineSceneProps) {
+export function SplineScene({ scene, className, priority = false, enableMouseTracking = false }: SplineSceneProps) {
   return (
     <Suspense 
       fallback={
@@ -25,7 +26,14 @@ export function SplineScene({ scene, className, priority = false }: SplineSceneP
           className={className}
           style={{ 
             willChange: priority ? 'transform' : 'auto',
-            transform: 'translateZ(0)'
+            transform: 'translateZ(0)',
+            pointerEvents: enableMouseTracking ? 'auto' : 'none'
+          }}
+          onLoad={(splineApp) => {
+            if (enableMouseTracking && splineApp) {
+              // Enable mouse tracking for the Spline scene
+              console.log('Spline scene loaded with mouse tracking enabled');
+            }
           }}
         />
       </div>
@@ -33,15 +41,16 @@ export function SplineScene({ scene, className, priority = false }: SplineSceneP
   )
 }
 
-// Hero background scene - Properly sized and positioned
+// Hero background scene - Properly sized and positioned with mouse tracking
 export function HeroSplineScene() {
   return (
-    <div className="absolute inset-0 opacity-30 pointer-events-none overflow-hidden">
+    <div className="absolute inset-0 opacity-30 overflow-hidden">
       <div className="w-full h-full flex items-center justify-center">
         <SplineScene 
           scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
           className="w-full h-full min-w-[800px] min-h-[600px] scale-75 md:scale-100"
           priority={true}
+          enableMouseTracking={true}
         />
       </div>
     </div>
